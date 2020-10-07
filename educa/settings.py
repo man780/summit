@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'students.apps.StudentsConfig',
+    'reception.apps.ReceptionConfig',
+    'refs.apps.RefsConfig',
     'embed_video',
     'memcache_status',
     'rest_framework',
