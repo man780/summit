@@ -68,6 +68,8 @@ class Students(models.Model):
     last_name = models.CharField(max_length=200)
     user = models.OneToOneField(User,
                                 related_name='student_user',
+                                null=True,
+                                default=None,
                                 on_delete=models.CASCADE)
     phone = models.CharField(max_length=200)
     come_from = models.ForeignKey(ComeFrom,
