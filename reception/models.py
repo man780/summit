@@ -35,6 +35,18 @@ class Teacher(models.Model):
         return self.full_name
 
 
+class Room(models.Model):
+    name = models.CharField(max_length=200)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Room'
+        verbose_name_plural = 'Rooms'
+
+    def __str__(self):
+        return self.name
+
+
 class Group(models.Model):
     name = models.CharField(max_length=200)
     group_type = models.ForeignKey(GroupTypes,
