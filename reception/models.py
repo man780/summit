@@ -1,8 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import ForeignKey
+
 from refs.models import (
     PreferDays,
     PreferTimes,
+    Phones,
     Levels,
     Statuses,
     IsOld,
@@ -57,6 +60,20 @@ class Group(models.Model):
                                 default=None,
                                 related_name='groups_teacher',
                                 on_delete=models.CASCADE)
+    room = models.ForeignKey(Room,
+                             null=True,
+                             blank=True,
+                             related_name='group_rooms',
+                             on_delete=models.SET_NULL)
+    level = models.ForeignKey(Levels,
+                              related_name='group_level',
+                              on_delete=models.CASCADE)
+    days = models.ForeignKey(PreferDays,
+                             related_name='group_days',
+                             on_delete=models.CASCADE)
+    times = models.ForeignKey(PreferTimes,
+                              related_name='group_times',
+                              on_delete=models.CASCADE)
     status = models.ForeignKey(Statuses,
                                default=1,
                                related_name='groups_status',
@@ -83,7 +100,8 @@ class Students(models.Model):
                                 null=True,
                                 default=None,
                                 on_delete=models.CASCADE)
-    phone = models.CharField(max_length=200)
+    phone = models.ManyToManyField(Phones,
+                                   related_name='phone')
     come_from = models.ForeignKey(ComeFrom,
                                   related_name='come_from',
                                   on_delete=models.CASCADE)
@@ -103,7 +121,9 @@ class Students(models.Model):
                                    null=True,
                                    on_delete=models.CASCADE)
     date_birth = models.DateField()
-    note = models.CharField(max_length=200)
+    note = models.CharField(max_length=200,
+                            null=None,
+                            default=None)
     is_old = models.ForeignKey(IsOld,
                                related_name='is_old_student',
                                default=1,
@@ -130,3 +150,6 @@ class Students(models.Model):
 
     def __str__(self):
         return self.full_name
+
+
+

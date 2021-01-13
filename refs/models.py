@@ -25,6 +25,19 @@ class PreferTimes(models.Model):
         return self.name
 
 
+class Phones(models.Model):
+    name = models.CharField(max_length=200)
+    number = models.CharField(max_length=200)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Phone'
+        verbose_name_plural = 'Phones'
+
+    def __str__(self):
+        return self.name
+
+
 class Levels(models.Model):
     name = models.CharField(max_length=200)
 

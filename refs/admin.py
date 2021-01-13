@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import (
     PreferDays,
     PreferTimes,
+    Phones,
     Levels,
     Statuses,
     IsOld,
@@ -19,6 +20,11 @@ class PreferDaysAdmin(admin.ModelAdmin):
 @admin.register(PreferTimes)
 class PreferTimesAdmin(admin.ModelAdmin):
     list_display = ['id', 'name']
+
+
+@admin.register(Phones)
+class PhonesAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'number']
 
 
 @admin.register(Levels)
