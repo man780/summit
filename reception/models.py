@@ -21,6 +21,10 @@ class Teacher(models.Model):
     phone = models.CharField(max_length=200)
     note = models.CharField(max_length=200)
     date_birth = models.DateField()
+    user = models.OneToOneField(User,
+                                on_delete=models.CASCADE,
+                                null=True,
+                                blank=True)
     created_time = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User,
                                    related_name='teacher_created',
@@ -67,13 +71,20 @@ class Group(models.Model):
                              on_delete=models.SET_NULL)
     level = models.ForeignKey(Levels,
                               related_name='group_level',
-                              on_delete=models.CASCADE)
+                              on_delete=models.CASCADE,
+                              null=True,
+                              blank=True
+                              )
     days = models.ForeignKey(PreferDays,
                              related_name='group_days',
-                             on_delete=models.CASCADE)
+                             on_delete=models.CASCADE,
+                             null=True,
+                             blank=True,)
     times = models.ForeignKey(PreferTimes,
                               related_name='group_times',
-                              on_delete=models.CASCADE)
+                              on_delete=models.CASCADE,
+                              null=True,
+                              blank=True,)
     status = models.ForeignKey(Statuses,
                                default=1,
                                related_name='groups_status',

@@ -19,7 +19,7 @@
 
     {% block extra_head %}{% endblock %}
 </head>
-<body class="hold-transition sidebar-mini {% block body_class %}{% block bodyclass %}{% endblock %}{% endblock %}">
+<body class="layout-top-nav layout-navbar-fixed">
 
 {% block body %}
     <div class="wrapper">
@@ -27,9 +27,6 @@
             {% include 'adminlte/lib/_main_header.html' %}
         {% endblock %}
 
-        {% block nav_sidebar %}
-            {% include 'adminlte/lib/_main_sidebar.html' %}
-        {% endblock %}
 
         {% block content_wrapper %}
         <div class="content-wrapper">
