@@ -39,7 +39,8 @@ class Teacher(models.Model):
         verbose_name_plural = 'Teachers'
 
     def __str__(self):
-        return self.full_name
+        # print(self.full_name)
+        return self.last_name
 
 
 class Room(models.Model):
@@ -149,7 +150,10 @@ class Students(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User,
                                    related_name='students_created',
-                                   on_delete=models.CASCADE)
+                                   on_delete=models.CASCADE,
+                                   null=True,
+                                   blank=True
+                                   )
 
     def full_name(self):
         return '%s %s' % (self.last_name, self.first_name)
@@ -160,7 +164,7 @@ class Students(models.Model):
         verbose_name_plural = 'Students'
 
     def __str__(self):
-        return self.full_name
+        return self.last_name
 
 
 
