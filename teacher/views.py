@@ -39,3 +39,8 @@ def group_students(request, id):
     return render(request,
                   'teacher/group_students.html',
                   data_dict)
+
+
+def dashboard(request):
+    return render(request,
+                  'teacher/dashboard.html')
