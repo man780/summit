@@ -10,7 +10,7 @@ django-memcache-status==2.2
 djangorestframework==3.12.1
 idna==2.10
 Markdown==3.2.2
-Pillow==7.2.0
+Pillow
 python-memcached==1.59
 pytz==2020.1
 requests==2.24.0

@@ -5,6 +5,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from .fields import OrderField
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
+from reception.models import Group, Students
 
 
 class Subject(models.Model):
@@ -103,3 +104,43 @@ class Image(ItemBase):
 
 class Video(ItemBase):
     url = models.URLField()
+
+
+class Homework(models.Model):
+    group = models.ForeignKey(Group,
+                              related_name='homework_group',
+                              on_delete=models.CASCADE)
+    date = models.DateField(verbose_name="Date", auto_now_add=True)
+    title = models.TextField(verbose_name="Homework title")
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+
+class Attendance(models.Model):
+    TYPES = [
+        (1, 'Д/З НЕ выполнено'),
+        (2, 'Д/З выполнено'),
+        (3, 'Assignment НЕ выполнено'),
+        (4, 'Assignment выполнено'),
+        (5, 'Словарь НЕ сдан'),
+        (6, 'Словарь сдан'),
+        (7, 'Пропуск'),
+        (8, 'Пропуск отработан'),
+    ]
+    group = models.ForeignKey(Group,related_name='attendance_group',on_delete=models.CASCADE)
+    student = models.ForeignKey(Students,related_name='attendance_student',on_delete=models.CASCADE)
+    date = models.DateField(verbose_name="Date", auto_now_add=True)
+    attendance_type = models.SmallIntegerField(choices=TYPES)
+    reason = models.TextField(blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+
+class Exams(models.Model):
+    group = models.ForeignKey(Group,
+                              related_name='exam_group',
+                              on_delete=models.CASCADE)
+    date = models.DateField(verbose_name="Date", auto_now_add=True)
+    title = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
