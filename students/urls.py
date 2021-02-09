@@ -4,6 +4,9 @@ from . import views
 
 
 urlpatterns = [
+    path('',
+         views.StudentIndex.as_view(),
+         name='index'),
     path('register/',
          views.StudentRegistrationView.as_view(),
          name='student_registration'),
@@ -19,4 +22,5 @@ urlpatterns = [
     path('course/<pk>/<module_id>/',
          cache_page(60 * 15)(views.StudentCourseDetailView.as_view()),
          name='student_course_detail_module'),
+
 ]

@@ -10,6 +10,13 @@ from courses.models import Course
 from .forms import CourseEnrollForm
 
 
+class StudentIndex(LoginRequiredMixin, ListView):
+    template_name = 'students/student/index.html'
+
+    def get_queryset(self):
+        return ''
+
+
 class StudentRegistrationView(CreateView):
     template_name = 'students/student/registration.html'
     form_class = UserCreationForm
