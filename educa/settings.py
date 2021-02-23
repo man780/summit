@@ -13,7 +13,7 @@ SECRET_KEY = 'ybx5d+youn7^%kho86%+%fenz8!&=jpwe%z7_@ygj7l9nskk*l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['142.93.234.120', '127.0.0.1']
 
 
 # Application definition
@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'students.apps.StudentsConfig',
     'reception.apps.ReceptionConfig',
     'refs.apps.RefsConfig',
@@ -74,12 +75,30 @@ WSGI_APPLICATION = 'educa.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'educa',
+            'USER': 'educa_user',
+            'PASSWORD': '123456',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'smart_edu_db',
+            'USER': 'smart_edu_user',
+            'PASSWORD': 'Mur0d!@##',
+        }
+    }
 
 
 # Password validation

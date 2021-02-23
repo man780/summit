@@ -17,6 +17,15 @@ class StudentIndex(LoginRequiredMixin, ListView):
         return ''
 
 
+class StudentMarks(LoginRequiredMixin, ListView):
+    template_name = 'students/student/marks.html'
+
+    def get_queryset(self):
+        # qs = super(StudentCourseListView, self).get_queryset()
+        # return qs.filter(students__in=[self.request.user])
+        return ''
+
+
 class StudentRegistrationView(CreateView):
     template_name = 'students/student/registration.html'
     form_class = UserCreationForm
@@ -47,15 +56,6 @@ class StudentEnrollCourseView(LoginRequiredMixin, FormView):
                             args=[self.course.id])
 
 
-class StudentCourseListView(LoginRequiredMixin, ListView):
-    model = Course
-    template_name = 'students/course/list.html'
-
-    def get_queryset(self):
-        qs = super(StudentCourseListView, self).get_queryset()
-        return qs.filter(students__in=[self.request.user])
-
-
 class StudentCourseDetailView(DetailView):
     model = Course
     template_name = 'students/course/detail.html'
@@ -77,3 +77,12 @@ class StudentCourseDetailView(DetailView):
             # get first module
             context['module'] = course.modules.all()[0]
         return context
+
+
+class StudentCourseListView(LoginRequiredMixin, ListView):
+    model = Course
+    template_name = 'students/course/list.html'
+
+    def get_queryset(self):
+        qs = super(StudentCourseListView, self).get_queryset()
+        return qs.filter(students__in=[self.request.user])
