@@ -13,7 +13,7 @@ SECRET_KEY = 'ybx5d+youn7^%kho86%+%fenz8!&=jpwe%z7_@ygj7l9nskk*l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['142.93.234.120', '127.0.0.1']
+ALLOWED_HOSTS = ['142.93.234.120', '127.0.0.1', 'smart-education.uz']
 
 
 # Application definition
