@@ -93,7 +93,7 @@ if DEBUG:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'smart_edu_db',
             'USER': 'smart_edu_user',
             'PASSWORD': 'Mur0d!@##',
