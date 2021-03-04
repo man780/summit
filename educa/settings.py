@@ -19,8 +19,9 @@ ALLOWED_HOSTS = ['104.248.122.144', '127.0.0.1', 'summit-education.uz', 'www.sum
 # Application definition
 
 INSTALLED_APPS = [
-    'adminlte3',
-    'adminlte3_theme',
+    # 'adminlte3',
+    # 'adminlte3_theme',
+    'adminlteui',
 
     'courses.apps.CoursesConfig',
     'django.contrib.admin',
@@ -173,5 +174,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
+}
+
+ADMINLTE_SETTINGS = {
+    'demo': True,
+    'search_form': False,
+    'copyright': 'Summit Education',
 }
 
