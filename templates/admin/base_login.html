@@ -18,18 +18,18 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-    <div class="login-logo">
+<body class="hold-transition login-page" style="background: black;">
+<div class="login-box" >
+    <div class="login-logo" >
         <a href="{% url 'admin:index' %}">
             <img src="https://anticorruption.uz/images/summit-logo.png" alt="Summit Education" width="200px">
         </a>
         <br>
-        <a href="{% url 'admin:index' %}">Summit Education</a>
+        <a style="color: #ccc;" href="{% url 'admin:index' %}">Summit Education</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p style="color: #ccc;" class="login-box-msg">Sign in to start your session</p>
 
         {% block content %}
             {% block object-tools %}{% endblock %}
