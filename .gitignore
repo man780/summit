@@ -116,3 +116,4 @@ videos/
 # !**/migrations
 # !**/migrations/__init__.py
 /static/
+/live-static/
