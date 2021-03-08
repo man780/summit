@@ -142,10 +142,10 @@ USE_TZ = True
 STATIC_URL = '/live-static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
 STATIC_ROOT = os.path.join(BASE_DIR, "live-static")
-STATICFILES_DIRS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    os.path.join(BASE_DIR, "static"),
-)
+# STATICFILES_DIRS = (
+#     # 'django.contrib.staticfiles.finders.FileSystemFinder',
+#     os.path.join(BASE_DIR, "static"),
+# )
 
 
 from django.urls import reverse_lazy
