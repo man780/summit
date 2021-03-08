@@ -99,7 +99,7 @@ ENV/
 # mkdocs documentation
 /site
 /media
-/live-static
+#/live-static
 
 # mypy
 .mypy_cache/
