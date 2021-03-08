@@ -141,8 +141,8 @@ USE_TZ = True
 
 STATIC_URL = '/live-static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
-# STATIC_ROOT = os.path.join(BASE_DIR, "live-static")
-STATIC_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), 'live-static'))
+STATIC_ROOT = os.path.join(BASE_DIR, "live-static")
+# STATIC_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), 'live-static'))
 STATICFILES_DIRS = (os.path.join('live-static'),)
 # STATICFILES_DIRS = (
 #     # 'django.contrib.staticfiles.finders.FileSystemFinder',
