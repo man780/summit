@@ -98,6 +98,8 @@ ENV/
 
 # mkdocs documentation
 /site
+/media
+/live-static
 
 # mypy
 .mypy_cache/
@@ -115,5 +117,3 @@ videos/
 # **/migrations/**
 # !**/migrations
 # !**/migrations/__init__.py
-/static/
-/live-static/
