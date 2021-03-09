@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Subject, Course, Module
+from .models import Subject, Course, Module, Exams, Lesson, Homework, Attendance
 
 
 @admin.register(Subject)
@@ -19,3 +19,23 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields = ['title', 'overview']
     prepopulated_fields = {'slug': ('title',)}
     inlines = [ModuleInline]
+
+
+@admin.register(Exams)
+class ExamsAdmin(admin.ModelAdmin):
+    list_display = ['group', 'date', 'title', 'created']
+
+
+@admin.register(Lesson)
+class LessonAdmin(admin.ModelAdmin):
+    list_display = ['group', 'date', 'title', 'created']
+
+
+@admin.register(Homework)
+class HomeworkAdmin(admin.ModelAdmin):
+    list_display = ['group', 'lesson', 'date', 'title', 'created']
+
+
+@admin.register(Attendance)
+class AttendanceAdmin(admin.ModelAdmin):
+    list_display = ['group', 'student', 'date', 'attendance_type', 'reason', 'created']

@@ -4,7 +4,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from .fields import OrderField
 from django.template.loader import render_to_string
-from django.utils.safestring import mark_safe
 from reception.models import Group, Students
 
 
@@ -50,7 +49,7 @@ class Module(models.Model):
     order = OrderField(blank=True, for_fields=['course'])
 
     class Meta:
-            ordering = ['order']
+        ordering = ['order']
 
     def __str__(self):
         return '{}. {}'.format(self.order, self.title)
@@ -61,17 +60,19 @@ class Content(models.Model):
                                related_name='contents',
                                on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType,
-                                     limit_choices_to={'model__in':('text',
-                                                                    'video',
-                                                                    'image',
-                                                                    'file')},
+                                     limit_choices_to={'model__in':
+                                                           ('text',
+                                                            'video',
+                                                            'image',
+                                                            'file')
+                                                       },
                                      on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     item = GenericForeignKey('content_type', 'object_id')
     order = OrderField(blank=True, for_fields=['module'])
 
     class Meta:
-            ordering = ['order']
+        ordering = ['order']
 
 
 class ItemBase(models.Model):
@@ -102,7 +103,7 @@ class File(ItemBase):
 
 
 class Image(ItemBase):
-       file = models.FileField(upload_to='images')
+    file = models.FileField(upload_to='images')
 
 
 class Video(ItemBase):
@@ -118,6 +119,12 @@ class Exams(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.title + ' - ' + self.date.strftime('%d/%m/%Y')
+
+    class Meta:
+        ordering = ['created']
+
 
 class Lesson(models.Model):
     group = models.ForeignKey(Group,
@@ -128,15 +135,32 @@ class Lesson(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.title + ' - ' + self.date.strftime('%d/%m/%Y')
+
+    class Meta:
+        ordering = ['created']
+
 
 class Homework(models.Model):
     group = models.ForeignKey(Group,
                               related_name='homework_group',
                               on_delete=models.CASCADE)
+    lesson = models.ForeignKey(Lesson,
+                               related_name='homework_lesson',
+                               on_delete=models.CASCADE,
+                               default=None,
+                               blank=True)
     date = models.DateField(verbose_name="Date", auto_now_add=True)
     title = models.TextField(verbose_name="Homework title")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title + ' - ' + self.date.strftime('%d/%m/%Y')
+
+    class Meta:
+        ordering = ['created']
 
 
 class Attendance(models.Model):
@@ -155,10 +179,26 @@ class Attendance(models.Model):
                               on_delete=models.CASCADE)
     student = models.ForeignKey(Students,
                                 related_name='attendance_student',
-                                on_delete=models.CASCADE)
+                                on_delete=models.CASCADE,
+                                blank=True,
+                                null=True)
+    lesson = models.ForeignKey(Lesson,
+                               related_name='lesson_attendance',
+                               on_delete=models.CASCADE,
+                               blank=True,
+                               null=True,
+                               default=None)
     date = models.DateField(verbose_name="Date",
                             auto_now_add=True)
+    is_first = models.BooleanField(default=False)
+    is_second = models.BooleanField(default=False)
     attendance_type = models.SmallIntegerField(choices=TYPES)
     reason = models.TextField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.date.strftime('%d/%m/%Y')
+
+    class Meta:
+        ordering = ['created']
