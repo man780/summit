@@ -87,6 +87,40 @@
                 <span class="sr-only">Toggle navigation</span>
             </a>
 
+            <div class="col-md-3">
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="{% trans 'Phone' %}...">
+                        <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3">
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="{% trans 'Group name' %}...">
+                        <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3">
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="{% trans 'Student' %}...">
+                        <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                    </div>
+                </form>
+            </div>
+
             <div class="navbar-custom-menu" style="float: left;">
                 <ul class="nav navbar-nav top-menu">
                     {% get_menu request 'top' as app_list %}

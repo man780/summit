@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'reception.apps.ReceptionConfig',
     'refs.apps.RefsConfig',
     'teacher.apps.TeacherConfig',
+    'finance.apps.FinanceConfig',
     'embed_video',
     'memcache_status',
     'rest_framework',
@@ -142,16 +143,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-# STATIC_URL = '/live-static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
-# STATIC_ROOT = os.path.join(BASE_DIR, "live-static")
-# STATIC_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), 'live-static'))
-# STATICFILES_DIRS = (os.path.join('live-static'),)
-# STATICFILES_DIRS = (
-#     # 'django.contrib.staticfiles.finders.FileSystemFinder',
-#     os.path.join(BASE_DIR, "static"),
-# )
-
 
 from django.urls import reverse_lazy
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
@@ -180,8 +171,10 @@ REST_FRAMEWORK = {
 }
 
 ADMINLTE_SETTINGS = {
-    'demo': True,
-    'search_form': False,
+    'demo': False,
+    'search_form': True,
     'copyright': 'Summit Education',
+    'skin': 'blue',
+    'navigation_expanded': True,
 }
 
