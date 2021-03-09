@@ -96,14 +96,37 @@ class ItemBase(models.Model):
 class Text(ItemBase):
     content = models.TextField()
 
+
 class File(ItemBase):
     file = models.FileField(upload_to='files')
+
 
 class Image(ItemBase):
        file = models.FileField(upload_to='images')
 
+
 class Video(ItemBase):
     url = models.URLField()
+
+
+class Exams(models.Model):
+    group = models.ForeignKey(Group,
+                              related_name='exam_group',
+                              on_delete=models.CASCADE)
+    date = models.DateField(verbose_name="Date", auto_now_add=True)
+    title = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+
+class Lesson(models.Model):
+    group = models.ForeignKey(Group,
+                              related_name='lesson_group',
+                              on_delete=models.CASCADE)
+    date = models.DateField(verbose_name="Date", auto_now_add=True)
+    title = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
 
 class Homework(models.Model):
@@ -127,20 +150,15 @@ class Attendance(models.Model):
         (7, 'Пропуск'),
         (8, 'Пропуск отработан'),
     ]
-    group = models.ForeignKey(Group,related_name='attendance_group',on_delete=models.CASCADE)
-    student = models.ForeignKey(Students,related_name='attendance_student',on_delete=models.CASCADE)
-    date = models.DateField(verbose_name="Date", auto_now_add=True)
+    group = models.ForeignKey(Group,
+                              related_name='attendance_group',
+                              on_delete=models.CASCADE)
+    student = models.ForeignKey(Students,
+                                related_name='attendance_student',
+                                on_delete=models.CASCADE)
+    date = models.DateField(verbose_name="Date",
+                            auto_now_add=True)
     attendance_type = models.SmallIntegerField(choices=TYPES)
     reason = models.TextField(blank=True, null=True)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-
-
-class Exams(models.Model):
-    group = models.ForeignKey(Group,
-                              related_name='exam_group',
-                              on_delete=models.CASCADE)
-    date = models.DateField(verbose_name="Date", auto_now_add=True)
-    title = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
