@@ -2,7 +2,8 @@ from django.contrib import admin
 from .models import (
     Teacher,
     Group,
-    Students
+    Students,
+    Room
 )
 from django.template.response import TemplateResponse
 from django.contrib.admin.views.decorators import staff_member_required
@@ -32,12 +33,8 @@ class StudentsAdmin(admin.ModelAdmin):
         return TemplateResponse(request, 'lost.html', context)
 
 
-# @staff_member_required
-# def student_list_view(request):
-    #show list of all objects
-    #. . . create objects of MyModel . . .
-    #. . . call their processing methods . . .
-    #. . . store in context variable . . .
-    # context = {'te': 'ttest'}
-    # r = render_to_response('admin/myapp/my_model_list.html', context, RequestContext(request))
-    # return HttpResponse(r)
+@admin.register(Room)
+class RoomAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
+

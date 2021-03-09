@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models import ForeignKey
 
 from refs.models import (
     PreferDays,
@@ -39,7 +38,6 @@ class Teacher(models.Model):
         verbose_name_plural = 'Teachers'
 
     def __str__(self):
-        # print(self.full_name)
         return self.last_name
 
 
