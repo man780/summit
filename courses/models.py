@@ -142,6 +142,27 @@ class Lesson(models.Model):
         ordering = ['created']
 
 
+class Homework(models.Model):
+    group = models.ForeignKey(Group,
+                              related_name='homework_group',
+                              on_delete=models.CASCADE)
+    lesson = models.ForeignKey(Lesson,
+                               related_name='homework_lesson',
+                               on_delete=models.CASCADE,
+                               default=None,
+                               blank=True)
+    date = models.DateField(verbose_name="Date", auto_now_add=True)
+    title = models.TextField(verbose_name="Homework title")
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title + ' - ' + self.date.strftime('%d/%m/%Y')
+
+    class Meta:
+        ordering = ['created']
+
+
 class Attendance(models.Model):
     TYPES = [
         (1, 'Д/З НЕ выполнено'),

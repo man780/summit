@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Subject, Course, Module, Exams, Lesson, Attendance
+from .models import Subject, Course, Module, Exams, Lesson, Homework, Attendance
 
 
 @admin.register(Subject)
@@ -31,9 +31,9 @@ class LessonAdmin(admin.ModelAdmin):
     list_display = ['group', 'date', 'title', 'created']
 
 
-# @admin.register(Homework)
-# class HomeworkAdmin(admin.ModelAdmin):
-#     list_display = ['group', 'lesson', 'date', 'title', 'created']
+@admin.register(Homework)
+class HomeworkAdmin(admin.ModelAdmin):
+    list_display = ['group', 'lesson', 'date', 'title', 'created']
 
 
 @admin.register(Attendance)
