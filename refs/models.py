@@ -35,7 +35,7 @@ class Phones(models.Model):
         verbose_name_plural = 'Phones'
 
     def __str__(self):
-        return self.name + ' ('+self.number+')'
+        return '%s (%s)' % (self.name, self.number)
 
 
 class Levels(models.Model):

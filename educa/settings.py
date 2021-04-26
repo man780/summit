@@ -179,3 +179,5 @@ ADMINLTE_SETTINGS = {
     'skin': 'blue',
 }
 
+logout_url = '/accounts/logout'
+
