@@ -125,15 +125,19 @@ class Students(models.Model):
     group = models.ForeignKey(Group,
                               related_name='students_group',
                               null=True,
-                              on_delete=models.CASCADE)
+                              on_delete=models.CASCADE,
+                              blank=True,
+                              default=None)
     group_type = models.ForeignKey(GroupTypes,
                                    related_name='student_group_type',
                                    null=True,
-                                   on_delete=models.CASCADE)
+                                   on_delete=models.CASCADE,
+                                   default=None)
     date_birth = models.DateField()
     note = models.CharField(max_length=200,
                             null=None,
-                            default=None)
+                            default=None,
+                            blank=True)
     is_old = models.ForeignKey(IsOld,
                                related_name='is_old_student',
                                default=1,

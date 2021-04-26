@@ -20,8 +20,8 @@ class GroupAdmin(admin.ModelAdmin):
 
 @admin.register(Students)
 class StudentsAdmin(admin.ModelAdmin):
-    list_display = ['full_name']
-    exclude = ('user', 'created_time', 'created_by')
+    list_display = ['full_name', 'created_time', 'level', 'group_type', 'note']
+    exclude = ('user', 'created_by')
 
     def lost(self, request):
         context = dict(

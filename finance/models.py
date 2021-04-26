@@ -7,6 +7,7 @@ class Payment(models.Model):
         (0, 'Not paid'),
         (1, 'Partial payment'),
         (2, 'Full paid'),
+        (3, 'Back money'),
     ]
     AMOUNT_TYPE = [
         (1, 'Plastic'),
