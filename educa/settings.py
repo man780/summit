@@ -19,7 +19,9 @@ ALLOWED_HOSTS = ['104.248.122.144', '127.0.0.1', 'summit-education.uz', 'www.sum
 # Application definition
 
 INSTALLED_APPS = [
-    'adminlteui',
+    # 'adminlteui',
+    'adminlte3',
+    'adminlte3_theme',
 
     'courses.apps.CoursesConfig',
     'django.contrib.admin',
