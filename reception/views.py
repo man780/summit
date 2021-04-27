@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Students
+from .models import Students, Group
 
 
 def reception(request):
@@ -10,4 +10,15 @@ def reception(request):
                   'reception/index.html',
                   {
                       'students': students
+                  })
+
+
+def groups(request):
+    groups = Group.objects.all()
+    if request.GET:
+        groups = groups.filter()
+    return render(request,
+                  'reception/groups.html',
+                  {
+                      'groups': groups
                   })

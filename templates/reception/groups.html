@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}SE - Groups{% endblock %}
+
+{% block content %}
+<style>
+.full {
+    background-color: red;
+    border: 1px solid #333;
+}
+</style>
+<h2>Groups</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3"><h4>Rooms</h4></div>
+            <div class="col-1 group-item">7:30</div>
+            <div class="col-1 group-item">9:00</div>
+            <div class="col-1 group-item">10:30</div>
+            <div class="col-1 group-item">12:00</div>
+            <div class="col-1 group-item">14:00</div>
+            <div class="col-1 group-item">15:30</div>
+            <div class="col-1 group-item">17:00</div>
+            <div class="col-1 group-item">18:30</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"><h4>Room-1</h4></div>
+            <div class="col-1 group-item">G-1</div>
+            <div class="col-1 group-item full">9:00</div>
+            <div class="col-1 group-item">10:30</div>
+            <div class="col-1 group-item">12:00</div>
+            <div class="col-1 group-item">14:00</div>
+            <div class="col-1 group-item">15:30</div>
+            <div class="col-1 group-item">17:00</div>
+            <div class="col-1 group-item">18:30</div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
