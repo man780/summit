@@ -88,6 +88,14 @@ class Group(models.Model):
                                default=1,
                                related_name='groups_status',
                                on_delete=models.CASCADE)
+    place_count = models.PositiveIntegerField(default=0)
+    sub = models.ForeignKey(Sub,
+                            related_name='group_sub',
+                            default=None,
+                            null=True,
+                            blank=True,
+                            on_delete=models.CASCADE
+                            )
     created_time = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User,
                                    related_name='group_created',

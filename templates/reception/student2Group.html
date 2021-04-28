@@ -4,7 +4,7 @@
 
 {% block content %}
 <h2>{{ student.full_name }}</h2>
-
+<p>Group: <b>{{student.group}}</b></p>
 <div class="row">
     {% for group in groups %}
     <div class="col-3">
@@ -15,9 +15,14 @@
                 </div>
             </div>
             <div class="card-body">
-                <p><b>{{group.level}}</b></p>
+                <p><b>{{group.level}}</b>: {{group.sub}}</p>
                 <p><b>{{group.days}}</b> {{group.times}}</p>
-                Teacher: <b>{{group.teacher.full_name}}</b>
+                <p>Teacher: <b>{{group.teacher.full_name}}</b></p>
+                <p class="text-center">
+                    <a class="btn btn-success" href="javascript:void(0);">
+                        Free places: <span>{{group.place_count}}</span>
+                    </a>
+                </p>
             </div>
         </div>
     </div>
