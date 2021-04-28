@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}SE - Student{% endblock %}
+
+{% block content %}
+<h2>{{ student.full_name }}</h2>
+
+<div class="row">
+    {% for group in groups %}
+    <div class="col-3">
+        <div class="card card-info">
+            <div class="card-header">
+                <div class="card-title">
+                    <h3>{{group.name}}</h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <p><b>{{group.level}}</b></p>
+                <p><b>{{group.days}}</b> {{group.times}}</p>
+                Teacher: <b>{{group.teacher.full_name}}</b>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

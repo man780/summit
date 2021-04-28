@@ -13,6 +13,18 @@ def reception(request):
                   })
 
 
+def receptionAddStudent2Group(request, student_id):
+    student = Students.objects.filter(id=student_id).get()
+    groups = Group.objects.all()
+
+    return render(request,
+                  'reception/student2Group.html',
+                  {
+                      'student': student,
+                      'groups': groups
+                  })
+
+
 def groups(request):
     groups = Group.objects.all()
     if request.GET:
