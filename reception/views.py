@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Students, Group
+from .models import Students, Group, StudentTransferGroup
 from refs.models import Phones
 from .forms import StudentsCreateForm
 from django.contrib import messages
@@ -46,10 +46,22 @@ def createStudent(request):
 
 
 def receptionAddStudent2Group(request, student_id):
-
+    import datetime
     student = Students.objects.filter(id=student_id).get()
     if request.method == 'POST':
-        pass
+        formData = request.POST
+        group_id = formData.get('group_id')
+        student.group_id = group_id
+        student.save()
+        dateStr = formData.get('date')
+        date = datetime.datetime.strptime(dateStr, "%Y-%m-%d").date()
+        transfer = StudentTransferGroup(student_id=student_id, group_id=group_id, date=date, sequence=1)
+        transfer.save()
+        # print(transfer)
+        # print(formData.get('date'), formData.get('group_id'))
+        # import sys
+        # sys.exit()
+
     groups = Group.objects.all()
 
     return render(request,

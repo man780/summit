@@ -3,6 +3,7 @@ from .models import (
     Teacher,
     Group,
     Students,
+    StudentTransferGroup,
     Room
 )
 from django.template.response import TemplateResponse
@@ -31,8 +32,11 @@ class StudentsAdmin(admin.ModelAdmin):
         return TemplateResponse(request, 'lost.html', context)
 
 
+@admin.register(StudentTransferGroup)
+class StudentTransferGroupAdmin(admin.ModelAdmin):
+    list_display = ['student', 'group', 'date']
+
+
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
     list_display = ['name']
-
-
