@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}SE - Create Student{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <div class="card-title">
+                    <h3>Create Student</h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <form action="." class="post" method="POST">
+                    {% csrf_token %}
+                    {% if message %}
+                        <p class="login-box-msg" style="color: red;">{{ message }}</p>
+                    {% endif %}
+                    {% for field in form %}
+                    <div class="form-group row form-row field-name">
+                        <label for="{{form.id_for_label}}" class="col-sm-2 col-form-label">
+                            {{ field.label_tag }}
+                        </label>
+                        {{ field }}
+                        {{ field.errors }}
+                        {% if field.help_text %}
+                        <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    <div class="form-group row form-row field-name">
+                        <div class="row">
+                            <div class="col-md-6"><h5>Phone</h5></div>
+                            <div class="col-md-6"><h5>Which phone</h5></div>
+                        </div>
+                        <div class="row gas-env-list">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" name="phone" class="form-block form-control">
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" name="relation" class="form-block form-control">
+                                </div>
+                                <div class="col-md-1">
+                                    <a class="btn btn-danger remove-item"
+                                       data-toggle="tooltip"
+                                       href="javascript:void(0)">x</a>
+                                </div>
+                            </div>
+                        </div>
+                        <input class="btn btn-success gas-env-add" type="button" value="Add">
+                    </div>
+                    <input type="submit" value="Create" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+$(document).ready(function(){
+    $('.gas-env-add').on('click', function(){
+        gas_env_list = $('.gas-env-list .row').first().clone();
+        $('.gas-env-list').append(gas_env_list);
+    });
+
+    $(document).on("click",".remove-item",function(){
+        $(this).parents('.gas-env-list .row').remove();
+    });
+});
+</script>
+{% endblock %}

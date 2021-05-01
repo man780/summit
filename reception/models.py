@@ -152,7 +152,10 @@ class Students(models.Model):
                                on_delete=models.CASCADE)
     sub = models.ForeignKey(Sub,
                             related_name='student_sub',
-                            on_delete=models.CASCADE)
+                            on_delete=models.CASCADE,
+                            default=None,
+                            null=True,
+                            blank=True)
     status = models.ForeignKey(Statuses,
                                related_name='student_status',
                                default=1,
@@ -175,6 +178,3 @@ class Students(models.Model):
 
     def __str__(self):
         return self.last_name
-
-
-
