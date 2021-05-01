@@ -3,6 +3,7 @@ from .models import Students, Group, StudentTransferGroup
 from refs.models import Phones
 from .forms import StudentsCreateForm
 from django.contrib import messages
+from django.core.exceptions import ObjectDoesNotExist
 
 
 def reception(request):
@@ -55,12 +56,19 @@ def receptionAddStudent2Group(request, student_id):
         student.save()
         dateStr = formData.get('date')
         date = datetime.datetime.strptime(dateStr, "%Y-%m-%d").date()
-        transfer = StudentTransferGroup(student_id=student_id, group_id=group_id, date=date, sequence=1)
-        transfer.save()
-        # print(transfer)
-        # print(formData.get('date'), formData.get('group_id'))
-        # import sys
-        # sys.exit()
+
+        transfer = StudentTransferGroup.objects.filter(student_id=student_id, status=True).first()
+        if transfer:
+            transfer.status = False
+            transfer.save()
+
+        StudentTransferGroup.objects.create(
+            student_id=student_id,
+            group_id=group_id,
+            date=date,
+            sequence=1,
+            status=True
+        )
 
     groups = Group.objects.all()
 

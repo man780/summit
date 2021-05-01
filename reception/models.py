@@ -177,7 +177,7 @@ class Students(models.Model):
         verbose_name_plural = 'Students'
 
     def __str__(self):
-        return self.last_name
+        return self.full_name()
 
 
 class StudentTransferGroup(models.Model):
@@ -186,3 +186,4 @@ class StudentTransferGroup(models.Model):
     sequence = models.PositiveIntegerField(default=1)
     date = models.DateField(default=None, blank=True, null=True)
     created_time = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(default=None, blank=True, null=True)

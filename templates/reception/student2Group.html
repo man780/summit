@@ -8,7 +8,7 @@
 <div class="row">
     {% for group in groups %}
     <div class="col-3">
-        <div class="card card-info">
+        <div class="card card-info group">
             <div class="card-header">
                 <div class="card-title">
                     <h3 class="group-name group_id" data-group-id="{{group.id}}">{{group.name}}</h3>
@@ -73,10 +73,10 @@
 <script>
 $(document).ready(function(){
     $('.transfer').click(function(){
-        group_id = $('.group_id').attr('data-group-id');
-        group_name = $('.group-name').html();
-        group_date = $('.group-date').html();
-        group_time = $('.group-time').html();
+        group_id = $(this).parents('.group').find('.group_id').attr('data-group-id');
+        group_name = $(this).parents('.group').find('.group-name').html();
+        group_date = $(this).parents('.group').find('.group-date').html();
+        group_time = $(this).parents('.group').find('.group-time').html();
         $('.current-group-id').val(group_id);
         $('.current-group-name').html(group_name);
         $('.current-group-date').html(group_date);

@@ -34,7 +34,7 @@ class StudentsAdmin(admin.ModelAdmin):
 
 @admin.register(StudentTransferGroup)
 class StudentTransferGroupAdmin(admin.ModelAdmin):
-    list_display = ['student', 'group', 'date']
+    list_display = ['student', 'group', 'date', 'status']
 
 
 @admin.register(Room)
