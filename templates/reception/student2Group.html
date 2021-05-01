@@ -11,21 +11,79 @@
         <div class="card card-info">
             <div class="card-header">
                 <div class="card-title">
-                    <h3>{{group.name}}</h3>
+                    <h3 class="group-name group_id" data-group-id="{{group.id}}">{{group.name}}</h3>
                 </div>
             </div>
             <div class="card-body">
                 <p><b>{{group.level}}</b>: {{group.sub}}</p>
-                <p><b>{{group.days}}</b> {{group.times}}</p>
+                <p><b class="group-date">{{group.days}}</b> <span class="group-time">{{group.times}}</span></p>
                 <p>Teacher: <b>{{group.teacher.full_name}}</b></p>
                 <p class="text-center">
                     <a class="btn btn-success" href="javascript:void(0);">
                         Free places: <span>{{group.place_count}}</span>
                     </a>
                 </p>
+                <p class="text-center">
+                    <button type="button" class="btn btn-primary transfer" data-toggle="modal" data-target="#modal-default">
+                        Transfer to this group
+                    </button>
+                </p>
             </div>
         </div>
     </div>
     {% endfor %}
+
+    <div class="modal fade" id="modal-default" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{student.full_name}}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div>
+                            <h3>Group: <span class="current-group-name"></span></h3>
+                            <h3>Date: <span class="current-group-date"></span></h3>
+                            <h3>Time: <span class="current-group-time"></span></h3>
+                        </div>
+                        <input type="hidden" name="group_id" class="current-group-id" value="0">
+                        <div class="input-group mb-3">
+                            <input type="date" class="form-control" placeholder="01.01.2021">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" value="Transfer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 </div>
+{% endblock %}
+
+{% block javascript %}
+{% include 'adminlte/lib/_scripts.html' %}
+{% block js %}
+<script>
+$(document).ready(function(){
+    $('.transfer').click(function(){
+        group_id = $('.group_id').attr('data-group-id');
+        group_name = $('.group-name').html();
+        group_date = $('.group-date').html();
+        group_time = $('.group-time').html();
+        $('.current-group-id').attr('value', group_id);
+        $('.current-group-name').html(group_name);
+        $('.current-group-date').html(group_date);
+        $('.current-group-time').html(group_time);
+    });
+});
+</script>
+{% endblock %}
 {% endblock %}
