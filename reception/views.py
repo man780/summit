@@ -24,7 +24,9 @@ def createStudent(request):
         form = StudentsCreateForm(data=request.POST)
 
         if form.is_valid():
-            new_item = form.save()
+            new_item = form.save(commit=False)
+            new_item.created_by = request.user
+            new_item.save()
 
             studentData = request.POST
             phoneList = studentData.getlist('phone')
@@ -128,4 +130,31 @@ def createGroup(request):
                   'reception/createGroup.html',
                   {
                       'form': form
+                  })
+
+
+def lost(request):
+    students = Students.objects.all()
+    return render(request,
+                  'reception/lost.html',
+                  {
+                      'students': students
+                  })
+
+
+def new_groups(request):
+    groups = Group.objects.all().order_by('-id')
+    return render(request,
+                  'reception/new_groups.html',
+                  {
+                      'groups': groups
+                  })
+
+
+def first_second(request):
+    students = Students.objects.all()
+    return render(request,
+                  'reception/first_second.html',
+                  {
+                      'students': students
                   })

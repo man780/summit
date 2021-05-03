@@ -18,4 +18,4 @@ class GroupCreateForm(forms.ModelForm):
         model = Group
         fields = ('name',  'group_type', 'teacher',
                   'room', 'level', 'days', 'times',
-                  'status', 'place_count', 'sub')
+                  'status', 'place_count', 'sub', 'start_date')

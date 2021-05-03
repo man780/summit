@@ -6,10 +6,14 @@ app_name = 'reception'
 
 urlpatterns = [
     path('reception/', views.reception, name='reception'),
-    path('createStudent/', views.createStudent, name='createStudent'),
+    path('create-student/', views.createStudent, name='createStudent'),
     path('reception/studentAdd2Group/<int:student_id>',
          views.receptionAddStudent2Group,
          name='receptionAddStudent2Group'),
     path('groups/', views.groups, name='groups'),
-    path('createGroup/', views.createGroup, name='createGroup'),
+    path('create-group/', views.createGroup, name='createGroup'),
+
+    path('lost/', views.lost, name='lost'),
+    path('new-groups/', views.new_groups, name='new_groups'),
+    path('first-second/', views.first_second, name='first_second'),
 ]

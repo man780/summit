@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}SE - Groups{% endblock %}
+
+{% block content %}
+
+<h2>Groups</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <a href="{% url 'reception:createGroup' %}" class="btn btn-primary">Create group</a>
+    </div>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>Group type</th>
+                <th>Name</th>
+                <th>Start Date</th>
+                <th>Teacher</th>
+                <th>Room</th>
+                <th>Days</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Level</th>
+                <th>Place Count</th>
+                <th>Student count</th>
+            </tr>
+            {% for group in groups %}
+            <tr>
+                <td>{{group.group_type}}</td>
+                <td>{{group.name}}</td>
+                <td>{{group.start_date}}</td>
+                <td>{{group.teacher}}</td>
+                <td>{{group.room}}</td>
+                <td>{{group.days}}</td>
+                <td>{{group.times}}</td>
+                <td>{{group.status}}</td>
+                <td>{{group.level}}</td>
+                <td>{{group.place_count}}</td>
+                <td>{{group.get_current_student_count}}</td>
+            </tr>
+            {% endfor %}
+            </table>
+    </div>
+</div>
+{% endblock %}

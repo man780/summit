@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}SE - Reception{% endblock %}
+
+{% block content %}
+<h2>Losts</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Full name</th>
+            <th>Phone</th>
+            <th>Teacher</th>
+            <th>Level</th>
+            <th>Group</th>
+            <th>Sub</th>
+            <th>Created By</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{student.created_time}}</td>
+            <td>{{student.full_name}}</td>
+            <td>
+                {% for phone in student.phone.all %}
+                <span class="badge badge-primary">{{phone}}</span>
+                {% endfor %}
+            </td>
+            <td>{{student.group.teacher}}</td>
+            <td>{{student.level}}</td>
+            <td>{{student.group}}</td>
+            <td>{{student.sub}}</td>
+            <td>{{student.created_by}}</td>
+            <td>
+                <a href="javascript:void(0);"><i class="fas fa-edit"></i></a>
+                <a href="javascript:void(0);"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

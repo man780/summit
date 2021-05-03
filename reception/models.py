@@ -38,7 +38,7 @@ class Teacher(models.Model):
         verbose_name_plural = 'Teachers'
 
     def __str__(self):
-        return self.last_name
+        return self.full_name()
 
 
 class Room(models.Model):
@@ -96,6 +96,7 @@ class Group(models.Model):
                             blank=True,
                             on_delete=models.CASCADE
                             )
+    start_date = models.DateTimeField(default=None, null=True, blank=True)
     created_time = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User,
                                    related_name='group_created',
