@@ -45,7 +45,7 @@ class Room(models.Model):
     name = models.CharField(max_length=200)
 
     class Meta:
-        ordering = ['name']
+        ordering = ['id']
         verbose_name = 'Room'
         verbose_name_plural = 'Rooms'
 
@@ -102,9 +102,12 @@ class Group(models.Model):
                                    on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ['name']
+        ordering = ['id']
         verbose_name = 'Group'
         verbose_name_plural = 'Groups'
+
+    def get_current_student_count(self):
+        return StudentTransferGroup.objects.filter(group_id=self.id, status=True).count()
 
     def __str__(self):
         return self.name

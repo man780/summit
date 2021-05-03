@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}SE - Create Student{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-8">
+        <div class="card card-primary">
+            <div class="card-header">
+                <div class="card-title">
+                    <h3>Create Group</h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <form action="." class="post" method="POST">
+                    {% csrf_token %}
+                    {% if message %}
+                        <p class="login-box-msg" style="color: red;">{{ message }}</p>
+                    {% endif %}
+                    {% for field in form %}
+                    <div class="form-group row form-row field-name">
+                        <label for="{{form.id_for_label}}" class="col-sm-2 col-form-label">
+                            {{ field.label_tag }}
+                        </label>
+                        {{ field }}
+                        {{ field.errors }}
+                        {% if field.help_text %}
+                        <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    <input type="submit" value="Create" class="btn btn-primary">
+                    <a href="{% url 'reception:groups' %}" class="btn btn-danger">Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

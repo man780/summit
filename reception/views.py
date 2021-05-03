@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Students, Group, StudentTransferGroup
-from refs.models import Phones
-from .forms import StudentsCreateForm
+from .models import Students, Group, StudentTransferGroup, Room
+from refs.models import Phones, PreferDays, PreferTimes
+from .forms import StudentsCreateForm, GroupCreateForm
 from django.contrib import messages
-from django.core.exceptions import ObjectDoesNotExist
 
 
 def reception(request):
@@ -37,7 +36,7 @@ def createStudent(request):
 
             messages.success(request, 'Student added successfully')
             # Перенаправляем пользователя на страницу сохраненного изображения.
-            return redirect('/')
+            return redirect('reception:reception')
 
     return render(request,
               'reception/createStudent.html',
@@ -62,11 +61,14 @@ def receptionAddStudent2Group(request, student_id):
             transfer.status = False
             transfer.save()
 
+        group = Group.objects.get(id=group_id)
+        sequence = group.get_current_student_count()
+
         StudentTransferGroup.objects.create(
             student_id=student_id,
             group_id=group_id,
             date=date,
-            sequence=1,
+            sequence=sequence+1,
             status=True
         )
 
@@ -82,10 +84,48 @@ def receptionAddStudent2Group(request, student_id):
 
 def groups(request):
     groups = Group.objects.all()
-    if request.GET:
-        groups = groups.filter()
+    rooms = Room.objects.all()
+    times = PreferTimes.objects.all()
+    groupMatrix = [['' for x in times] for y in rooms]
+
+    for group in groups:
+        groupMatrix[group.room.id-1][group.times.id-1] = group.name
+    for room in rooms:
+        groupMatrix[room.id-1][0] = room.name
+    """for room in range(rooms.count()):
+        groupMatrix[room][0] = room
+        for time in times:
+            groupMatrix[room.id-1][time.id-1] = 0"""
+    # for group in groups:
+    #     groupMatrix[group.room.id][group.times.id] = group.name
+    # print(groupMatrix)
     return render(request,
                   'reception/groups.html',
                   {
-                      'groups': groups
+                      'rooms': rooms,
+                      'groups': groups,
+                      'times': times,
+                      'groupMatrix': groupMatrix,
+                  })
+
+
+def createGroup(request):
+    form = GroupCreateForm(data=request.GET)
+
+    if request.method == 'POST':
+        # Форма отправлена.
+        form = GroupCreateForm(data=request.POST)
+
+        if form.is_valid():
+            group = form.save(commit=False)
+            group.created_by = request.user
+            group.save()
+            messages.success(request, 'Group added successfully')
+            # Перенаправляем пользователя на страницу груп.
+            return redirect('reception:groups')
+
+    return render(request,
+                  'reception/createGroup.html',
+                  {
+                      'form': form
                   })

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Students
+from .models import Students, Group
 
 
 class StudentsCreateForm(forms.ModelForm):
@@ -12,3 +12,10 @@ class StudentsCreateForm(forms.ModelForm):
             'note': forms.Textarea(attrs={'cols': 80, 'rows': 10}),
         }
 
+
+class GroupCreateForm(forms.ModelForm):
+    class Meta:
+        model = Group
+        fields = ('name',  'group_type', 'teacher',
+                  'room', 'level', 'days', 'times',
+                  'status', 'place_count', 'sub')

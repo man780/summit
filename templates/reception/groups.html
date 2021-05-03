@@ -4,35 +4,41 @@
 
 {% block content %}
 <style>
+.group-item {
+    border: 1px solid #333;
+}
 .full {
     background-color: red;
     border: 1px solid #333;
 }
 </style>
 <h2>Groups</h2>
+{% for group in groups %}
+{{group.name}}
+{{group.get_current_student_count}}
+{% endfor %}
 <div class="row">
+    <div class="col-md-12">
+        <a href="{% url 'reception:createGroup' %}" class="btn btn-primary">Create group</a>
+    </div>
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-3"><h4>Rooms</h4></div>
-            <div class="col-1 group-item">7:30</div>
-            <div class="col-1 group-item">9:00</div>
-            <div class="col-1 group-item">10:30</div>
-            <div class="col-1 group-item">12:00</div>
-            <div class="col-1 group-item">14:00</div>
-            <div class="col-1 group-item">15:30</div>
-            <div class="col-1 group-item">17:00</div>
-            <div class="col-1 group-item">18:30</div>
+            {% for time in times %}
+            <div class="col-1 ">{{time.name}}</div>
+            {% endfor %}
         </div>
         <div class="row">
-            <div class="col-md-3"><h4>Room-1</h4></div>
-            <div class="col-1 group-item">G-1</div>
-            <div class="col-1 group-item full">9:00</div>
-            <div class="col-1 group-item">10:30</div>
-            <div class="col-1 group-item">12:00</div>
-            <div class="col-1 group-item">14:00</div>
-            <div class="col-1 group-item">15:30</div>
-            <div class="col-1 group-item">17:00</div>
-            <div class="col-1 group-item">18:30</div>
+            {% for room in rooms %}
+            <div class="col-md-3"><h4>{{room.name}}</h4></div>
+                <div class="col-1 group-item full"></div>
+            <div class="col-1 group-item "></div>
+            <div class="col-1 group-item "></div>
+            <div class="col-1 group-item "></div>
+            <div class="col-1 group-item "></div>
+            <div class="col-1 group-item "></div>
+            <div class="col-1 group-item "></div>
+            {% endfor %}
         </div>
 
     </div>

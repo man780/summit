@@ -17,7 +17,7 @@ class PreferTimes(models.Model):
     name = models.CharField(max_length=200)
 
     class Meta:
-        ordering = ['name']
+        ordering = ['id']
         verbose_name = 'Prefer time'
         verbose_name_plural = 'Prefer times'
 

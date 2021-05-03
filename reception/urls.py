@@ -11,4 +11,5 @@ urlpatterns = [
          views.receptionAddStudent2Group,
          name='receptionAddStudent2Group'),
     path('groups/', views.groups, name='groups'),
+    path('createGroup/', views.createGroup, name='createGroup'),
 ]
