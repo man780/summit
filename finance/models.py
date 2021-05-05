@@ -21,6 +21,9 @@ class Payment(models.Model):
     amount = models.IntegerField(default=0)
     type = models.IntegerField(choices=AMOUNT_TYPE, default=None, blank=True)
     status = models.IntegerField(choices=STATUS)
+    from_date = models.DateField(default=None, blank=True, null=True)
+    to_date = models.DateField(default=None, blank=True, null=True)
+    want_pay_next_month = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
