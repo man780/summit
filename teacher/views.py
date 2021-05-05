@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 from reception.models import Students, Group
 
 
@@ -29,9 +29,9 @@ def student(request, id):
                   data_dict)
 
 
-def group_students(request, id):
-    group = get_object_or_404(Group, id=id)
-    students = get_object_or_404(Students, group_id=id)
+def group_students(request, group_id):
+    group = get_object_or_404(Group, id=group_id)
+    students = get_list_or_404(Students, group_id=group_id)
     data_dict = {
         'group': group,
         'students': students
