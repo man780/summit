@@ -138,7 +138,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
 from django.urls import reverse_lazy
-LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
+LOGIN_REDIRECT_URL = reverse_lazy('reception:reception')
+LOGOUT_REDIRECT_URL = reverse_lazy('course_list')
 
 
 MEDIA_URL = '/media/'
