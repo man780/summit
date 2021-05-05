@@ -15,5 +15,6 @@ urlpatterns = [
 
     path('lost/', views.lost, name='lost'),
     path('new-groups/', views.new_groups, name='new_groups'),
-    path('first-second/', views.first_second, name='first_second'),
+    path('first-lesson/', views.first_lesson, name='first_lesson'),
+    path('second-lesson/', views.second_lesson, name='second_lesson'),
 ]

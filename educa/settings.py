@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ybx5d+youn7^%kho86%+%fenz8!&=jpwe%z7_@ygj7l9nskk*l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['104.248.122.144', '127.0.0.1', 'summit-education.uz', 'www.summit-education.uz']
 
@@ -19,7 +19,6 @@ ALLOWED_HOSTS = ['104.248.122.144', '127.0.0.1', 'summit-education.uz', 'www.sum
 # Application definition
 
 INSTALLED_APPS = [
-    # 'adminlteui',
     'adminlte3',
     'adminlte3_theme',
 
@@ -87,14 +86,6 @@ if DEBUG:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.postgresql',
-    #         'NAME': 'educa',
-    #         'USER': 'educa_user',
-    #         'PASSWORD': '123456',
-    #     }
-    # }
 else:
     DATABASES = {
         'default': {

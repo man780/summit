@@ -4,12 +4,11 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-6"><a href="#" class="btn btn-info w-100"><h2>First Lesson</h2></a></div>
-    <div class="col-6"><a href="#" class="btn btn-success w-100"><h2>Second Lesson</h2></a></div>
+    <div class="col-6"><a href="{% url 'reception:first_lesson' %}" class="btn btn-info w-100"><h2>First Lesson</h2></a></div>
+    <div class="col-6"><a href="{% url 'reception:second_lesson' %}" class="btn btn-success w-100"><h2>Second Lesson</h2></a></div>
 </div>
 
-<h2>First Lesson Statistics</h2>
-<a class="btn btn-primary" href="{% url 'reception:createStudent' %}">Create reception</a>
+<h2>{{title}}</h2>
 <br>
 <br>
 <br>

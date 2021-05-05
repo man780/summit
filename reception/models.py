@@ -191,3 +191,41 @@ class StudentTransferGroup(models.Model):
     date = models.DateField(default=None, blank=True, null=True)
     created_time = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default=None, blank=True, null=True)
+
+
+class StudentLessons(models.Model):
+    STATUS = [
+        (0, 'UpSent'),
+        (1, 'Homework'),
+    ]
+    student = models.ForeignKey(Students,
+                                on_delete=models.CASCADE,
+                                related_name='student_lesson')
+    group = models.ForeignKey(Group,
+                              on_delete=models.CASCADE,
+                              related_name='group_lesson')
+    date = models.DateField(default=None)
+    is_first = models.BooleanField(default=None)
+    is_second = models.BooleanField(default=None)
+    status = models.PositiveIntegerField(choices=STATUS)
+
+
+class Lost(models.Model):
+    STATUS = [
+        (1, 'First Lesson'),
+        (2, 'Second Lesson'),
+        (3, 'From reception'),
+        (4, 'Regular'),
+    ]
+    student = models.ForeignKey(Students,
+                                on_delete=models.CASCADE,
+                                related_name='student_lost')
+    group = models.ForeignKey(Group,
+                              on_delete=models.CASCADE,
+                              related_name='group_lost')
+    status = models.PositiveIntegerField(choices=STATUS,
+                                         default=None,
+                                         blank=True,
+                                         null=True)
+    reason = models.TextField(default=None, blank=True)
+

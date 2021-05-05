@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Students, Group, StudentTransferGroup, Room
+from .models import Students, Group, StudentTransferGroup, Room, StudentLessons, Lost
 from refs.models import Phones, PreferDays, PreferTimes
 from .forms import StudentsCreateForm, GroupCreateForm
 from django.contrib import messages
+from django.db.models import Prefetch
 
 
 def reception(request):
@@ -151,10 +152,29 @@ def new_groups(request):
                   })
 
 
-def first_second(request):
-    students = Students.objects.all()
+def first_lesson(request):
+    student_lesson_qs = StudentLessons.objects.filter(is_first=True).all()
+    students = Students.objects.filter(student_lesson__is_first=True)\
+        .prefetch_related(Prefetch('student_lesson', queryset=student_lesson_qs))\
+        .all()
+
     return render(request,
                   'reception/first_second.html',
                   {
-                      'students': students
+                      'students': students,
+                      'title': 'First Lesson Statistics',
+                  })
+
+
+def second_lesson(request):
+    student_lesson_qs = StudentLessons.objects.filter(is_second=True).all()
+    students = Students.objects.filter(student_lesson__is_second=True)\
+        .prefetch_related(Prefetch('student_lesson', queryset=student_lesson_qs))\
+        .all()
+
+    return render(request,
+                  'reception/first_second.html',
+                  {
+                      'students': students,
+                      'title': 'Second Lesson Statistics',
                   })
