@@ -152,10 +152,12 @@
             <td>{{student.group_type}}</td>
             <td>{{student.note}}</td>
             <td>
-                <a href="javascript:void(0);" style="border:1px solid #aaa; padding:1px 5px; border-radius:50%">R</a>
-                <a href="{% url 'reception:receptionAddStudent2Group' student_id=student.id %}"><i class="fas fa-star"></i></a>
-                <a href="javascript:void(0);"><i class="fas fa-edit"></i></a>
-                <a href="javascript:void(0);"><i class="fas fa-trash"></i></a>
+                <a href="javascript:void(0);" class="rounded-button">R</a>
+                <a href="{% url 'reception:transferStudent2Group' student_id=student.id %}" class="rounded-button">
+                    T
+                </a>
+                <a href="{% url 'reception:editStudent' student_id=student.id %}"><i class="fas fa-edit"></i></a>
+                <a href="{% url 'reception:deleteStudent' student_id=student.id %}"><i class="fas fa-trash"></i></a>
             </td>
         </tr>
         {% endfor %}

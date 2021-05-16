@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+edifrom django.shortcuts import render, redirect, get_object_or_404
 from .models import Students, Group, StudentTransferGroup, Room, StudentLessons, Lost
 from refs.models import Phones, PreferDays, PreferTimes
 from .forms import StudentsCreateForm, GroupCreateForm
 from django.contrib import messages
 from django.db.models import Prefetch
+import datetime
 
 
 def reception(request):
@@ -25,9 +26,9 @@ def createStudent(request):
         form = StudentsCreateForm(data=request.POST)
 
         if form.is_valid():
-            new_item = form.save(commit=False)
-            new_item.created_by = request.user
-            new_item.save()
+            new_student = form.save(commit=False)
+            new_student.created_by = request.user
+            new_student.save()
 
             studentData = request.POST
             phoneList = studentData.getlist('phone')
@@ -35,10 +36,9 @@ def createStudent(request):
             for i in range(len(phoneList)):
                 phone = Phones(name=relationList[i], number=phoneList[i])
                 phone.save()
-                new_item.phone.add(phone)
+                new_student.phone.add(phone)
 
             messages.success(request, 'Student added successfully')
-            # Перенаправляем пользователя на страницу сохраненного изображения.
             return redirect('reception:reception')
 
     return render(request,
@@ -48,8 +48,52 @@ def createStudent(request):
               })
 
 
-def receptionAddStudent2Group(request, student_id):
-    import datetime
+def editStudent(request, student_id):
+
+    student = get_object_or_404(Students, id=student_id)
+    form = StudentsCreateForm(request.POST or None, instance=student)
+    if request.method == 'POST':
+        # Форма отправлена.
+        form = StudentsCreateForm(data=request.POST, instance=student)
+        if form.is_valid():
+            student = form.save(commit=False)
+            student.save()
+
+            studentData = request.POST
+            phoneList = studentData.getlist('phone')
+            relationList = studentData.getlist('relation')
+            for i in range(len(phoneList)):
+                if relationList[i] != '' or phoneList[i] != '':
+                    phone = Phones(name=relationList[i], number=phoneList[i])
+                    phone.save()
+                    student.phone.add(phone)
+
+            messages.success(request, 'Student added successfully')
+            return redirect('reception:reception')
+
+    return render(request,
+              'reception/createStudent.html',
+              {
+                  'form': form
+              })
+
+
+def deleteStudent(request, student_id):
+    student = get_object_or_404(Students, id=student_id)
+
+    if request.method == "POST":
+        # delete object
+        student.delete()
+        messages.error(request, 'Student successfully deleted')
+        return redirect("reception:reception")
+
+    return render(request, "reception/studentDelete.html", {
+        'student': student
+    })
+
+
+def transferStudent2Group(request, student_id):
+
     student = Students.objects.filter(id=student_id).get()
     if request.method == 'POST':
         formData = request.POST

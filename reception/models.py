@@ -197,6 +197,8 @@ class StudentLessons(models.Model):
     STATUS = [
         (0, 'UpSent'),
         (1, 'Homework'),
+        # (2, 'First Lesson'),
+        # (3, 'Second Lesson'),
     ]
     student = models.ForeignKey(Students,
                                 on_delete=models.CASCADE,

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}SE - Student delete{% endblock %}
+
+{% block content %}
+<div class="main">
+    <!-- Create a Form -->
+    <form method="POST">
+        <!-- Security token by Django -->
+        {% csrf_token %}
+        Are you want to delete student ?
+        <h1>{{student.full_name}}</h1>
+        <input type="submit" value="Yes" class="btn btn-danger" />
+        <a href="{% url 'reception:reception' %}" class="btn btn-info">Cancel </a>
+    </form>
+</div>
+{% endblock %}

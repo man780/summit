@@ -7,9 +7,11 @@ app_name = 'reception'
 urlpatterns = [
     path('reception/', views.reception, name='reception'),
     path('create-student/', views.createStudent, name='createStudent'),
-    path('reception/studentAdd2Group/<int:student_id>',
-         views.receptionAddStudent2Group,
-         name='receptionAddStudent2Group'),
+    path('edit-student/<int:student_id>/', views.editStudent, name='editStudent'),
+    path('delete-student/<int:student_id>/', views.deleteStudent, name='deleteStudent'),
+    path('reception/studentAdd2Group/<int:student_id>/',
+         views.transferStudent2Group,
+         name='transferStudent2Group'),
     path('groups/', views.groups, name='groups'),
     path('create-group/', views.createGroup, name='createGroup'),
 
