@@ -1,4 +1,4 @@
-edifrom django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Students, Group, StudentTransferGroup, Room, StudentLessons, Lost
 from refs.models import Phones, PreferDays, PreferTimes
 from .forms import StudentsCreateForm, GroupCreateForm
