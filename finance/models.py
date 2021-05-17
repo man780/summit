@@ -5,13 +5,14 @@ from reception.models import Students
 class Payment(models.Model):
     STATUS = [
         (0, 'Not paid'),
-        (1, 'Partial payment'),
+        (1, 'Should pay'),
         (2, 'Full paid'),
         (3, 'Back money'),
     ]
     AMOUNT_TYPE = [
         (1, 'Plastic'),
-        (2, 'Cash')
+        (2, 'Cash'),
+        (3, 'MOT'),
     ]
     date = models.DateField(auto_now_add=True)
     student = models.ForeignKey(Students,
