@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Students, Group, StudentTransferGroup, Room, StudentLessons, Lost
 from refs.models import Phones, PreferDays, PreferTimes
+from finance.models import Payment
 from .forms import StudentsCreateForm, GroupCreateForm
 from django.contrib import messages
 from django.db.models import Prefetch
@@ -117,6 +118,21 @@ def transferStudent2Group(request, student_id):
             date=date,
             sequence=sequence+1,
             status=True
+        )
+        StudentLessons.objects.create(
+            student=student,
+            group=group,
+            date=date,
+            is_first=True
+        )
+        # next_month = datetime.datetime.strptime(dateStr, "%Y-%m-%d").date()
+        next_month = datetime.datetime(date.year + int(date.month / 12), ((date.month % 12) + 1), 1)
+        Payment.objects.create(
+            date=date,
+            student=student,
+            status=0,
+            from_date=date,
+            to_date=next_month,
         )
 
     groups = Group.objects.all()

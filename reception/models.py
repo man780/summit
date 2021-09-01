@@ -207,9 +207,9 @@ class StudentLessons(models.Model):
                               on_delete=models.CASCADE,
                               related_name='group_lesson')
     date = models.DateField(default=None)
-    is_first = models.BooleanField(default=None)
-    is_second = models.BooleanField(default=None)
-    status = models.PositiveIntegerField(choices=STATUS)
+    is_first = models.BooleanField(default=None, blank=True, null=True)
+    is_second = models.BooleanField(default=None, blank=True, null=True)
+    status = models.PositiveIntegerField(choices=STATUS, blank=True, null=True)
 
 
 class Lost(models.Model):

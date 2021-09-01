@@ -4,6 +4,8 @@ from .models import (
     Group,
     Students,
     StudentTransferGroup,
+    StudentLessons,
+    Lost,
     Room
 )
 from django.template.response import TemplateResponse
@@ -35,6 +37,11 @@ class StudentsAdmin(admin.ModelAdmin):
 @admin.register(StudentTransferGroup)
 class StudentTransferGroupAdmin(admin.ModelAdmin):
     list_display = ['student', 'group', 'date', 'status']
+
+
+@admin.register(StudentLessons)
+class StudentLessonsAdmin(admin.ModelAdmin):
+    list_display = ['student', 'group', 'date', 'is_first', 'is_second', 'status']
 
 
 @admin.register(Room)
