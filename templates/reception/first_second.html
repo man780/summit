@@ -18,10 +18,12 @@
             <th>Date</th>
             <th>Full name</th>
             <th>Phone</th>
-            <th>Level</th>
-            <th>Prefer Time</th>
-            <th>Group Type</th>
+            <th>From date</th>
+            <th>To date</th>
+            <th>Lessons</th>
+            <th>Info</th>
             <th>Note</th>
+            <th>Paid</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -35,14 +37,17 @@
                 <span class="badge badge-primary">{{phone}}</span>
                 {% endfor %}
             </td>
-            <td>{{student.level}}</td>
+            <td>{{student.payment_student.from_date}}</td>
+            <td>{{student.payment_student.to_date}}</td>
+            <td>12</td>
             <td>
-                {% for prefer_time in student.prefer_time.all %}
-                    <span class="badge badge-info">{{prefer_time}}</span>
-                {% endfor %}
+                <span class="badge badge-info">{{student.group.name}}</span>
+                <span class="badge badge-info">{{student.group.teacher.full_name}}</span>
+                <span class="badge badge-primary">{{student.group.days}} {{student.group.times}}</span>
+                <span class="badge badge-primary">{{student.group.level}}: {{student.group.sub}}</span>
             </td>
-            <td>{{student.group_type}}</td>
             <td>{{student.note}}</td>
+            <td></td>
             <td>
                 <a href="javascript:void(0);" style="border:1px solid #aaa; padding:1px 5px; border-radius:50%">R</a>
                 <a href="">
