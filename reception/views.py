@@ -149,26 +149,28 @@ def groups(request):
     groups = Group.objects.all()
     rooms = Room.objects.all()
     times = PreferTimes.objects.all()
-    groupMatrix = [['' for x in times] for y in rooms]
+
+    scheduleList = []
+    for room in rooms:
+        scheduleList.insert(
+            room.id,
+            {
+                'id': room.id,
+                'name': room.name,
+                'times': [{'class': 'button', 'name': ''} for x in times]
+            }
+        )
 
     for group in groups:
-        groupMatrix[group.room.id-1][group.times.id-1] = group.name
-    for room in rooms:
-        groupMatrix[room.id-1][0] = room.name
-    """for room in range(rooms.count()):
-        groupMatrix[room][0] = room
-        for time in times:
-            groupMatrix[room.id-1][time.id-1] = 0"""
-    # for group in groups:
-    #     groupMatrix[group.room.id][group.times.id] = group.name
-    # print(groupMatrix)
+        scheduleList[group.room.id-1]['times'][group.times.id-1] = {'class': 'full', 'name': group.name}
+
     return render(request,
                   'reception/groups.html',
                   {
                       'rooms': rooms,
                       'groups': groups,
                       'times': times,
-                      'groupMatrix': groupMatrix,
+                      'schedule': scheduleList,
                   })
 
 

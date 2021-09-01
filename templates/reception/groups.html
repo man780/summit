@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block title %}SE - Groups{% endblock %}
-
+{% block extra_head %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}
 {% block content %}
 <style>
 .group-item {
@@ -13,34 +15,34 @@
 }
 </style>
 <h2>Groups</h2>
-{% for group in groups %}
-{{group.name}}
-{{group.get_current_student_count}}
-{% endfor %}
-<div class="row">
-    <div class="col-md-12">
-        <a href="{% url 'reception:createGroup' %}" class="btn btn-primary">Create group</a>
-    </div>
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-3"><h4>Rooms</h4></div>
-            {% for time in times %}
-            <div class="col-1 ">{{time.name}}</div>
-            {% endfor %}
-        </div>
-        <div class="row">
-            {% for room in rooms %}
-            <div class="col-md-3"><h4>{{room.name}}</h4></div>
-                <div class="col-1 group-item full"></div>
-            <div class="col-1 group-item "></div>
-            <div class="col-1 group-item "></div>
-            <div class="col-1 group-item "></div>
-            <div class="col-1 group-item "></div>
-            <div class="col-1 group-item "></div>
-            <div class="col-1 group-item "></div>
-            {% endfor %}
-        </div>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{% url 'reception:createGroup' %}" class="btn btn-primary create-group">Create group</a>
+        </div>
     </div>
+    <div class="row">
+        <div class="col-md-3"><h4>Rooms</h4></div>
+        {% for time in times %}
+        <div class="col-1 ">{{time.name}}</div>
+        {% endfor %}
+    </div>
+    {% for roomList in schedule %}
+    <div class="row">
+        <div class="col-md-3"><h4>{{roomList.name}}</h4></div>
+        {% for group in roomList.times %}
+            <div class="col-1 group-item {{group.class}}">{{group.name}}</div>
+        {% endfor %}
+    </div>
+    {% endfor %}
 </div>
+
+<script>
+$(document).ready(function(){
+    jQuery( ".button" ).on( "click", function() {
+        window.location.replace("{% url 'reception:createGroup' %}")
+    });
+})
+</script>
 {% endblock %}
