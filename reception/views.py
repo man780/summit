@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Students, Group, StudentTransferGroup, Room, StudentLessons, Lost
+from django.contrib import messages
+from django.db.models import Prefetch
+from django.core import serializers
+from django.http import JsonResponse, HttpResponse
+
 from refs.models import Phones, PreferDays, PreferTimes
 from finance.models import Payment
 from .forms import StudentsCreateForm, GroupCreateForm
-from django.contrib import messages
-from django.db.models import Prefetch
+from .models import Students, Group, StudentTransferGroup, Room, StudentLessons, Lost
+
 import datetime
 
 
@@ -145,6 +149,25 @@ def transferStudent2Group(request, student_id):
                   })
 
 
+def get_group(request):
+    if request.is_ajax and request.method == "GET":
+        # get the nick name from the client side.
+        group_id = request.GET.get("group_id", None)
+        group = Group.objects.get(pk=group_id)
+        # print(group.name)
+        if group:
+            group_dict = {
+                "name": group.name,
+                "teacher": group.teacher.full_name(),
+                "level": group.level.name,
+                "place_count": group.place_count,
+            }
+            return JsonResponse(group_dict, status=200)
+        else:
+            return JsonResponse({}, status=404)
+    return JsonResponse({}, status=400)
+
+
 def groups(request):
     groups = Group.objects.all()
     rooms = Room.objects.all()
@@ -157,12 +180,16 @@ def groups(request):
             {
                 'id': room.id,
                 'name': room.name,
-                'times': [{'class': 'button', 'name': ''} for x in times]
+                'times': [{'class': 'button'} for x in times]
             }
         )
 
     for group in groups:
-        scheduleList[group.room.id-1]['times'][group.times.id-1] = {'class': 'full', 'name': group.name}
+        scheduleList[group.room.id-1]['times'][group.times.id-1] = {
+            'id': group.id,
+            'name': group.name,
+            'class': 'full',
+        }
 
     return render(request,
                   'reception/groups.html',

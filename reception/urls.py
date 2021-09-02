@@ -12,6 +12,7 @@ urlpatterns = [
     path('reception/studentAdd2Group/<int:student_id>/',
          views.transferStudent2Group,
          name='transferStudent2Group'),
+    path('group/ajax/get/', views.get_group, name="get_ajax_group"),
     path('groups/', views.groups, name='groups'),
     path('create-group/', views.createGroup, name='createGroup'),
 

@@ -13,6 +13,9 @@
     background-color: red;
     border: 1px solid #333;
 }
+.card p {
+    margin-bottom: 0px;
+}
 </style>
 <h2>Groups</h2>
 
@@ -32,10 +35,33 @@
     <div class="row">
         <div class="col-md-3"><h4>{{roomList.name}}</h4></div>
         {% for group in roomList.times %}
-            <div class="col-1 group-item {{group.class}}">{{group.name}}</div>
+            <div class="col-1 group-item {{group.class}}" data-group-id="{{group.id}}">{{group.name}}</div>
         {% endfor %}
     </div>
     {% endfor %}
+</div>
+
+
+<div class="card" style="width: 18rem;position:absolute;bottom: 0px;right: 0px;">
+  <div class="card-body">
+    <h5 class="card-title">Group detail</h5>
+    <p class="card-text">
+      <p class="group-name"><b>Name: </b><span></span></p>
+      <p class="group-students"><b>Students: </b><span></span></p>
+      <p class="group-payment">
+          <b>Paid: </b><span></span>
+          <b>Should: </b><span></span>
+      </p>
+      <p class="group-first"><b>First Lesson: </b><span></span></p>
+      <p class="group-second"><b>Second Lesson: </b><span></span></p>
+      <p class="group-podo"><b>PODO: </b><span></span></p>
+      <p class="group-absent"><b>Absent: </b><span></span></p>
+      <p class="group-teacher"><b>Teacher: </b><span></span></p>
+      <p class="group-assistant"><b>Assistant: </b><span></span></p>
+      <p class="group-level"><b>Level: </b><span></span></p>
+    </p>
+  <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
 </div>
 
 <script>
@@ -43,6 +69,27 @@ $(document).ready(function(){
     jQuery( ".button" ).on( "click", function() {
         window.location.replace("{% url 'reception:createGroup' %}")
     });
+    jQuery( ".full" ).on( "click", function() {
+        let group_id = $(this).attr("data-group-id");
+        $.ajax({
+            type: 'GET',
+            url: "{% url 'reception:get_ajax_group' %}",
+            data: {"group_id": group_id},
+            success: function (response) {
+                // if not valid user, alert the user
+                console.log(response);
+                $(".group-name>span").html(response.name);
+                $(".group-level>span").html(response.level);
+                $(".group-teacher>span").html(response.teacher);
+                $(".group-students>span").html(response.place_count);
+
+            },
+            error: function (response) {
+                console.log(response)
+            }
+        })
+    });
 })
 </script>
+
 {% endblock %}
