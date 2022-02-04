@@ -5,6 +5,7 @@ from .models import (
     Phones,
     Levels,
     Statuses,
+    StudentStatus,
     IsOld,
     GroupTypes,
     ComeFrom,
@@ -34,6 +35,11 @@ class LevelsAdmin(admin.ModelAdmin):
 
 @admin.register(Statuses)
 class StatusesAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name']
+
+
+@admin.register(StudentStatus)
+class StudentStatusAdmin(admin.ModelAdmin):
     list_display = ['id', 'name']
 
 

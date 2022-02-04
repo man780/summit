@@ -62,6 +62,18 @@ class Statuses(models.Model):
         return self.name
 
 
+class StudentStatus(models.Model):
+    name = models.CharField(max_length=200)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Student Status'
+        verbose_name_plural = 'Student Statuses'
+
+    def __str__(self):
+        return self.name
+
+
 class IsOld(models.Model):
     name = models.CharField(max_length=200)
 

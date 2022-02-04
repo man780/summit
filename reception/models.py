@@ -7,6 +7,7 @@ from refs.models import (
     Phones,
     Levels,
     Statuses,
+    StudentStatus,
     IsOld,
     GroupTypes,
     ComeFrom,
@@ -115,6 +116,16 @@ class Group(models.Model):
 
 
 class Students(models.Model):
+    STATUS = [
+        (0, 'New'),
+        (1, 'First Lesson'),
+        (2, 'Second Lesson'),  # Star bosganda shu statusga otadi
+        # (3, 'P'),  # Darsga keladi (Regularda kerak emas)
+        # (20, 'R'),  # Telefonni olmayapti (Regularda kerak)
+        # (20, 'PODO'),  # PODO
+        (30, 'Delete'),  # Lostga tushadi
+        (40, 'Regular'),  # Pul tolashni boshladi
+    ]
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     user = models.OneToOneField(User,
@@ -134,6 +145,7 @@ class Students(models.Model):
                                         related_name='prefer_day')
     prefer_time = models.ManyToManyField(PreferTimes,
                                          related_name='prefer_time')
+    is_podo = models.BooleanField(default=False)
     group = models.ForeignKey(Group,
                               related_name='students_group',
                               null=True,
@@ -160,10 +172,12 @@ class Students(models.Model):
                             default=None,
                             null=True,
                             blank=True)
-    status = models.ForeignKey(Statuses,
-                               related_name='student_status',
-                               default=1,
-                               on_delete=models.CASCADE)
+    status = models.PositiveSmallIntegerField(verbose_name='Student status',
+                                              choices=STATUS,
+                                              default=None,
+                                              null=True)
+    status_p = models.BooleanField(verbose_name='Probejka', default=False)
+    status_r = models.BooleanField(verbose_name='Call', default=False)
     created_time = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User,
                                    related_name='students_created',
@@ -211,6 +225,11 @@ class StudentLessons(models.Model):
     is_second = models.BooleanField(default=None, blank=True, null=True)
     status = models.PositiveIntegerField(choices=STATUS, blank=True, null=True)
 
+    class Meta:
+        ordering = ['-id']
+        verbose_name = 'StudentLesson'
+        verbose_name_plural = 'StudentLessons'
+
 
 class Lost(models.Model):
     STATUS = [
@@ -230,4 +249,3 @@ class Lost(models.Model):
                                          blank=True,
                                          null=True)
     reason = models.TextField(default=None, blank=True)
-

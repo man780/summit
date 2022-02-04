@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.contrib import messages
 from django.db.models import Prefetch
 from django.core import serializers
 from django.http import JsonResponse, HttpResponse
 
 from refs.models import Phones, PreferDays, PreferTimes
-from finance.models import Payment
+from finance.models import Payment, WantPay
 from .forms import StudentsCreateForm, GroupCreateForm
 from .models import Students, Group, StudentTransferGroup, Room, StudentLessons, Lost
 
@@ -88,7 +88,11 @@ def deleteStudent(request, student_id):
 
     if request.method == "POST":
         # delete object
-        student.delete()
+        if student.status == 30:
+            student.delete()
+        else:
+            student.status = 30
+            student.save()
         messages.error(request, 'Student successfully deleted')
         return redirect("reception:reception")
 
@@ -223,15 +227,6 @@ def createGroup(request):
                   })
 
 
-def lost(request):
-    students = Students.objects.all()
-    return render(request,
-                  'reception/lost.html',
-                  {
-                      'students': students
-                  })
-
-
 def new_groups(request):
     groups = Group.objects.all().order_by('-id')
     return render(request,
@@ -241,29 +236,184 @@ def new_groups(request):
                   })
 
 
+def group_show(request, group_id):
+    group = get_object_or_404(Group, id=group_id)
+    students = Students.objects.filter(group_id=group_id).all()
+    data_dict = {
+        'group': group,
+        'students': students
+    }
+    return render(request,
+                  'teacher/group_students_table.html',
+                  data_dict)
+
+
+def group_edit(request, group_id):
+    group = get_object_or_404(Group, id=group_id)
+    data_dict = {
+        'group': group,
+    }
+    return render(request,
+                  'reception/group_edit.html',
+                  data_dict)
+
+
+def lost(request):
+    students = Students.objects.all()
+    return render(request,
+                  'reception/lost.html',
+                  {
+                      'students': students
+                  })
+
+
 def first_lesson(request):
-    student_lesson_qs = StudentLessons.objects.filter(is_first=True).all()
-    students = Students.objects.filter(student_lesson__is_first=True)\
-        .prefetch_related(Prefetch('student_lesson', queryset=student_lesson_qs))\
-        .all()
+    # student_lesson_qs = StudentLessons.objects.filter(is_first=True).all()
+    students = Students.objects.filter(status=1).all()
 
     return render(request,
                   'reception/first_second.html',
                   {
+                      'lesson': 1,
                       'students': students,
                       'title': 'First Lesson Statistics',
                   })
 
 
+def send2second_lesson(request, student_id):
+    student = get_object_or_404(Students, id=student_id)
+    student.status = 2
+    student.status_p = False
+    student.status_r = False
+    student.save()
+
+    s = datetime.date
+    today = str(s.today())
+    sl = StudentLessons(
+        student=student,
+        group=student.group,
+        is_first=True,
+        is_second=False,
+        date=today
+    )
+    sl.save()
+    return redirect('reception:second_lesson')
+
+
+def send2first_lesson(request, student_id):
+    student = get_object_or_404(Students, id=student_id)
+    student.status = 1
+    student.status_p = False
+    student.status_r = False
+    student.save()
+    # TODO: delete StudentLesson
+    sl = StudentLessons.objects.filter(
+        student=student,
+        group=student.group,
+        is_first=False,
+        is_second=True)
+    sl.delete()
+    # END-TODO---------
+    return redirect('reception:first_lesson')
+
+
+def student_r(request, student_id):
+    student = get_object_or_404(Students, id=student_id)
+    student.status_r = True
+    student.save()
+    return redirect('reception:second_lesson')
+
+
+def student_p(request, student_id):
+    student = get_object_or_404(Students, id=student_id)
+    student.status_p = True
+    student.save()
+    return redirect('reception:second_lesson')
+
+
+# PODO button clicked
+def student_podo(request, student_id):
+    student = get_object_or_404(Students, id=student_id)
+    if student.is_podo:
+        student.is_podo = False
+    else:
+        student.is_podo = True
+    print(student.is_podo)
+    student.save()
+    return redirect('/main/first-lesson')
+
+
+import calendar
+
+
+def next_month_date(d):
+    _year = d.year+(d.month//12)
+    _month =  1 if (d.month//12) else d.month + 1
+    next_month_len = calendar.monthrange(_year,_month)[1]
+    next_month = d
+    if d.day > next_month_len:
+        next_month = next_month.replace(day=next_month_len)
+    next_month = next_month.replace(year=_year, month=_month)
+    return next_month
+
+
+def student_pay(request, student_id):
+    if request.method == 'POST':
+        formData = request.POST
+        student = get_object_or_404(Students, id=student_id)
+        student.status = 40
+        student.save()
+
+        amount = formData['amount']
+        payment_status = formData['payment_status']
+        payment_type = formData['payment_type']
+        date = formData['date']
+        from_date = formData['date']
+        d = datetime.datetime.strptime(from_date, '%Y-%m-%d')
+        to_date = next_month_date(d)
+        payment = Payment(
+            student=student,
+            date=date,
+            amount=amount,
+            type=payment_type,
+            status=payment_status,
+            from_date=from_date,
+            to_date=to_date,
+            want_pay_next_month=False,
+        )
+        print(payment)
+        payment.save()
+
+    return redirect('reception:reception')
+
+
+def student_want2pay(request, student_id):
+    if request.method == 'POST':
+        formData = request.POST
+        student = get_object_or_404(Students, id=student_id)
+
+        date = formData['date']
+        w2p = WantPay(
+            student=student,
+            date=date,
+        )
+        # print(payment)
+        w2p.save()
+
+    return redirect('reception:reception')
+
+
 def second_lesson(request):
-    student_lesson_qs = StudentLessons.objects.filter(is_second=True).all()
-    students = Students.objects.filter(student_lesson__is_second=True)\
-        .prefetch_related(Prefetch('student_lesson', queryset=student_lesson_qs))\
-        .all()
+    # student_lesson_qs = StudentLessons.objects.filter(is_second=True).all()
+    students = Students.objects.filter(status=2).all()
 
     return render(request,
                   'reception/first_second.html',
                   {
+                      'lesson': 2,
                       'students': students,
                       'title': 'Second Lesson Statistics',
                   })
+
+
+
