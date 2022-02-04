@@ -41,6 +41,18 @@ def group_students(request, group_id):
                   data_dict)
 
 
+def group_students_table(request, group_id):
+    group = get_object_or_404(Group, id=group_id)
+    students = get_list_or_404(Students, group_id=group_id)
+    data_dict = {
+        'group': group,
+        'students': students
+    }
+    return render(request,
+                  'teacher/group_students_table.html',
+                  data_dict)
+
+
 def dashboard(request):
     return render(request,
                   'teacher/dashboard.html')
