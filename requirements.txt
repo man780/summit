@@ -1,7 +1,7 @@
-asgiref==3.2.10
+asgiref==3.3.2
 certifi==2020.6.20
 chardet==3.0.4
-Django==3.1.2
+Django==3.2
 django-adminlte-ui==1.5.1
 django-adminlte3==0.1.6
 django-braces==1.14.0
@@ -13,7 +13,7 @@ djangorestframework==3.12.1
 gunicorn==20.0.4
 idna==2.10
 Markdown==3.2.2
-Pillow==7.2.0
+Pillow==8.4.0
 psycopg2-binary==2.8.6
 python-memcached==1.59
 pytz==2020.1
