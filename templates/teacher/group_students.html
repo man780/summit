@@ -22,7 +22,12 @@
 </section>
 
 <section class="content">
-
+    <div class="row">
+        <div class="col">
+            <a href="{% url 'teacher:group-students-table' group_id=group.id %}" class="btn btn-default">Show as table</a>
+            <a href="{% url 'teacher:group-students' group_id=group.id %}" class="btn btn-default">Show as card</a>
+        </div>
+    </div>
     <!-- Default box -->
     <div class="card card-solid">
         <div class="card-body pb-0">

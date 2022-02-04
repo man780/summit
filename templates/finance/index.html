@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}SE - Reception{% endblock %}
+
+{% block content %}
+<h2>Receptions</h2>
+<br>
+<br>
+<br>
+<div class="box box-info">
+    <div class="box-body">
+        <form class="form">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Search and Filter</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="form-control" placeholder="Enter ...">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Date:</label>
+
+                <div class="input-group date">
+                  <input type="text" class="form-control pull-right" id="datepicker">
+                </div>
+                <!-- /.input group -->
+              </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+              <label>Type</label>
+              <select class="form-control">
+                <option>Select</option>
+                <option value="0">0</option>
+              </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              <label>Time</label>
+              <select class="form-control">
+                <option>Select</option>
+                <option>option 2</option>
+                <option>option 3</option>
+                <option>option 4</option>
+                <option>option 5</option>
+              </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+              <label>Level</label>
+              <select class="form-control">
+                <option>Select</option>
+                <option>option 2</option>
+                <option>option 3</option>
+                <option>option 4</option>
+                <option>option 5</option>
+              </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              <label>Sub</label>
+              <select class="form-control">
+                <option>Select</option>
+                <option>option 2</option>
+                <option>option 3</option>
+                <option>option 4</option>
+                <option>option 5</option>
+              </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+              <label>Group Type</label>
+              <select class="form-control">
+                <option>Select</option>
+                <option>option 2</option>
+                <option>option 3</option>
+                <option>option 4</option>
+                <option>option 5</option>
+              </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              <label>Is Old</label>
+              <select class="form-control">
+                <option>Select</option>
+                <option>option 2</option>
+                <option>option 3</option>
+                <option>option 4</option>
+                <option>option 5</option>
+              </select>
+            </div>
+        </div>
+    </div>
+</form>
+    </div>
+</div>
+<script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script>
+  $(function () {
+    $('#datepicker').datepicker()
+  })
+</script>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Full name</th>
+            <th>Phone</th>
+            <th>Level</th>
+            <th>Prefer Time</th>
+            <th>Group Type</th>
+            <th>Note</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{student.created_time}}</td>
+            <td>{{student.full_name}}</td>
+            <td>
+                {% for phone in student.phone.all %}
+                <span class="badge badge-primary">{{phone}}</span>
+                {% endfor %}
+            </td>
+            <td>{{student.level}}</td>
+            <td>
+                {% for prefer_time in student.prefer_time.all %}
+                    <span class="badge badge-info">{{prefer_time}}</span>
+                {% endfor %}
+            </td>
+            <td>{{student.group_type}}</td>
+            <td>{{student.note}}</td>
+            <td>
+                <a href="javascript:void(0);" class="rounded-button">R</a>
+                <a href="{% url 'reception:transferStudent2Group' student_id=student.id %}" class="rounded-button">
+                    T
+                </a>
+                <a href="{% url 'reception:editStudent' student_id=student.id %}"><i class="fas fa-edit"></i></a>
+                <a href="{% url 'reception:deleteStudent' student_id=student.id %}"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

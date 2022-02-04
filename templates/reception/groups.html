@@ -60,7 +60,8 @@
       <p class="group-assistant"><b>Assistant: </b><span></span></p>
       <p class="group-level"><b>Level: </b><span></span></p>
     </p>
-  <a href="#" class="btn btn-primary">Go somewhere</a>
+  <a href="javascript:void(0);" class="btn btn-primary show-group">Show group</a>
+  <a href="javascript:void(0);" class="btn btn-success edit-group">Edit group</a>
   </div>
 </div>
 
@@ -82,7 +83,10 @@ $(document).ready(function(){
                 $(".group-level>span").html(response.level);
                 $(".group-teacher>span").html(response.teacher);
                 $(".group-students>span").html(response.place_count);
-
+                let hrefEdit = "/main/group-edit/";
+                $(".edit-group").attr("href", hrefEdit+group_id);
+                let hrefShow = "/main/group-show/";
+                $(".show-group").attr("href", hrefShow+group_id);
             },
             error: function (response) {
                 console.log(response)
