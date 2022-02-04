@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from reception.models import Students, Group
 
-# Create your views here.
+
+def index(request):
+    students = Students.objects.all()
+    return render(request,
+                  'finance/index.html',
+                  {
+                      'students': students
+                  })
