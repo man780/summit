@@ -1,0 +1,35 @@
+server {
+    server_name 157.230.245.113 summit-education.uz www.summit-education.uz;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/murod/summit;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/murod/summit.sock;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/summit-education.uz/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/summit-education.uz/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
+server {
+    if ($host = www.summit-education.uz) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = summit-education.uz) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name 157.230.245.113 summit-education.uz www.summit-education.uz;
+    return 404; # managed by Certbot
