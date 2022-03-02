@@ -173,3 +173,4 @@ ADMINLTE_SETTINGS = {
 
 logout_url = '/accounts/logout'
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
