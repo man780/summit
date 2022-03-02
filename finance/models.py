@@ -20,7 +20,7 @@ class Payment(models.Model):
                                 on_delete=models.CASCADE)
     note = models.TextField()
     amount = models.IntegerField(default=0)
-    type = models.IntegerField(choices=AMOUNT_TYPE, default=None, blank=True)
+    type = models.IntegerField(choices=AMOUNT_TYPE, default=None, blank=True, null=True)
     status = models.IntegerField(choices=STATUS)
     from_date = models.DateField(default=None, blank=True, null=True)
     to_date = models.DateField(default=None, blank=True, null=True)
