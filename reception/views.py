@@ -108,6 +108,7 @@ def transferStudent2Group(request, student_id):
         formData = request.POST
         group_id = formData.get('group_id')
         student.group_id = group_id
+        student.status = 1
         student.save()
         dateStr = formData.get('date')
         date = datetime.datetime.strptime(dateStr, "%Y-%m-%d").date()
