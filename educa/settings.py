@@ -14,7 +14,9 @@ SECRET_KEY = 'ybx5d+youn7^%kho86%+%fenz8!&=jpwe%z7_@ygj7l9nskk*l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['165.22.218.232', '127.0.0.1', 'summit-education.uz', 'www.summit-education.uz']
+ALLOWED_HOSTS = [
+    '165.22.218.232', '127.0.0.1', 'summit-education.uz', 'www.summit-education.uz', 'summit-education.herokuapp.com'
+]
 
 
 # Application definition
