@@ -13,7 +13,7 @@ import datetime
 
 
 def reception(request):
-    students = Students.objects.all()
+    students = Students.objects.filter(status=None).all()
     if request.GET:
         students = students.filter()
     return render(request,
@@ -33,24 +33,27 @@ def createStudent(request):
         if form.is_valid():
             new_student = form.save(commit=False)
             new_student.created_by = request.user
-            new_student.save()
+            new_student.status = 0
+            new_student.save(commit=False)
 
-            studentData = request.POST
-            phoneList = studentData.getlist('phone')
-            relationList = studentData.getlist('relation')
-            for i in range(len(phoneList)):
-                phone = Phones(name=relationList[i], number=phoneList[i])
-                phone.save()
-                new_student.phone.add(phone)
+            student_data = request.POST
+            phone_list = student_data.getlist('phone')
+            relation_list = student_data.getlist('relation')
+            if len(phone_list) > 1:
+                for i in range(len(phone_list)):
+                    phone = Phones(name=relation_list[i], number=phone_list[i])
+                    phone.save()
+                    new_student.phone.add(phone)
+                new_student.save(commit=True)
+            else:
+                messages.success(request, 'Student is not created')
+                # new_student.rollback()
+                return redirect('reception:reception')
 
             messages.success(request, 'Student added successfully')
             return redirect('reception:reception')
 
-    return render(request,
-              'reception/createStudent.html',
-              {
-                  'form': form
-              })
+    return render(request, 'reception/createStudent.html', {'form': form})
 
 
 def editStudent(request, student_id):
