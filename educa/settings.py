@@ -94,6 +94,8 @@ else:
             'NAME': 'smart_edu_db',
             'USER': 'smart_edu_user',
             'PASSWORD': 'Mur0d!@##',
+            'HOST': 'localhost',
+            'PORT': '5432',
         },
         'OPTIONS': {
             'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
