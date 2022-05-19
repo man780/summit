@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}SE - Reception{% endblock %}
+
+{% block content %}
+<h2>Finance</h2>
+<br>
+<br>
+<br>
+<script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script>
+  $(function () {
+    $('#datepicker').datepicker()
+  })
+</script>
+
+<h1>Not Paid</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in not_paid_students %}
+        <tr>
+            <td>{{student.full_name}}</td>
+            <td>{{student.student.date}}</td>
+            <td>{{student.payment.amount}}</td>
+            <td>{{student.student.group}}</td>
+            <td>{{student.student.group.teacher}}</td>
+            <td>
+                {{student.student.group.days}},
+                {{student.student.group.times}}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

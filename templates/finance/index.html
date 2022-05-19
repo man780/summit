@@ -3,114 +3,10 @@
 {% block title %}SE - Reception{% endblock %}
 
 {% block content %}
-<h2>Receptions</h2>
+<h2>Finance</h2>
 <br>
 <br>
 <br>
-<div class="box box-info">
-    <div class="box-body">
-        <form class="form">
-    <div class="row">
-        <div class="col-md-12">
-            <h4>Search and Filter</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-              <label>Name</label>
-              <input type="text" class="form-control" placeholder="Enter ...">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label>Date:</label>
-
-                <div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker">
-                </div>
-                <!-- /.input group -->
-              </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-              <label>Type</label>
-              <select class="form-control">
-                <option>Select</option>
-                <option value="0">0</option>
-              </select>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-              <label>Time</label>
-              <select class="form-control">
-                <option>Select</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                <option>option 5</option>
-              </select>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-              <label>Level</label>
-              <select class="form-control">
-                <option>Select</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                <option>option 5</option>
-              </select>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-              <label>Sub</label>
-              <select class="form-control">
-                <option>Select</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                <option>option 5</option>
-              </select>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-              <label>Group Type</label>
-              <select class="form-control">
-                <option>Select</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                <option>option 5</option>
-              </select>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-              <label>Is Old</label>
-              <select class="form-control">
-                <option>Select</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                <option>option 5</option>
-              </select>
-            </div>
-        </div>
-    </div>
-</form>
-    </div>
-</div>
 <script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
@@ -157,6 +53,75 @@
                 </a>
                 <a href="{% url 'reception:editStudent' student_id=student.id %}"><i class="fas fa-edit"></i></a>
                 <a href="{% url 'reception:deleteStudent' student_id=student.id %}"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h1>Paid</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+        </tr>
+    </thead>
+    <tbody>
+        {% for payment in payments %}
+        <tr>
+            <td>{{payment.student.full_name}}</td>
+            <td>{{payment.date}}</td>
+            <td>{{payment.amount}}</td>
+            <td>{{payment.student.group}}</td>
+            <td>{{payment.student.group.teacher}}</td>
+            <td>
+                {{payment.student.group.days}},
+                {{payment.student.group.times}}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h1>Not Paid</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in not_paid_students %}
+        <tr>
+            <td>{{student.full_name}}</td>
+            <td>{{student.student.date}}</td>
+            <td>{{student.payment.amount}}</td>
+            <td>{{student.student.group}}</td>
+            <td>{{student.student.group.teacher}}</td>
+            <td>
+                {{student.student.group.days}},
+                {{student.student.group.times}}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h1>Should Paid</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in should_pay %}
+        <tr>
+            <td>{{student.full_name}}</td>
+            <td>{{student.student.date}}</td>
+            <td>{{student.payment.amount}}</td>
+            <td>{{student.student.group}}</td>
+            <td>{{student.student.group.teacher}}</td>
+            <td>
+                {{student.student.group.days}},
+                {{student.student.group.times}}
             </td>
         </tr>
         {% endfor %}
