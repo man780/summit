@@ -1,5 +1,5 @@
 server {
-    server_name 157.230.245.113 summit-education.uz www.summit-education.uz;
+    server_name 206.81.22.179 summit-education.uz www.summit-education.uz;
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
@@ -31,5 +31,5 @@ server {
 
 
     listen 80;
-    server_name 157.230.245.113 summit-education.uz www.summit-education.uz;
+    server_name 206.81.22.179 summit-education.uz www.summit-education.uz;
     return 404; # managed by Certbot

@@ -112,6 +112,8 @@ videos/
 *.pyc
 *.db
 *.pid
+summit.example
+gunicorn.service.example
 
 # Ignore Django Migrations in Development if you are working on team
 
