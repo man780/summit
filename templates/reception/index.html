@@ -4,7 +4,7 @@
 
 {% block content %}
 <h2>Receptions</h2>
-<a class="btn btn-primary" href="{% url 'reception:createStudent' %}">Create reception</a>
+<a class="btn btn-primary" href="{% url 'reception:add_student' %}">Create reception</a>
 <br>
 <br>
 <br>
@@ -153,11 +153,11 @@
             <td>{{student.note}}</td>
             <td>
                 <a href="javascript:void(0);" class="rounded-button">R</a>
-                <a href="{% url 'reception:transferStudent2Group' student_id=student.id %}" class="rounded-button">
+                <a href="{% url 'reception:transfer_student_to_group' student_id=student.id %}" class="rounded-button">
                     T
                 </a>
-                <a href="{% url 'reception:editStudent' student_id=student.id %}"><i class="fas fa-edit"></i></a>
-                <a href="{% url 'reception:deleteStudent' student_id=student.id %}"><i class="fas fa-trash"></i></a>
+                <a href="{% url 'reception:edit_student' student_id=student.id %}"><i class="fas fa-edit"></i></a>
+                <a href="{% url 'reception:delete_student' student_id=student.id %}"><i class="fas fa-trash"></i></a>
             </td>
         </tr>
         {% endfor %}

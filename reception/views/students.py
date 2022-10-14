@@ -9,7 +9,7 @@ from reception.forms import StudentsCreateForm
 from finance.models import Payment
 
 
-def create_student(request):
+def add_student(request):
     form = StudentsCreateForm(data=request.GET)
 
     if request.method == 'POST':
@@ -40,7 +40,7 @@ def create_student(request):
             return redirect('reception:reception')
 
     title = 'Add student'
-    return render(request, 'reception/create_student.html', {
+    return render(request, 'reception/add_student.html', {
         'form': form,
         'title': title
     })
@@ -69,7 +69,7 @@ def edit_student(request, student_id):
             messages.success(request, 'Student added successfully')
             return redirect('reception:reception')
     title = 'Edit student'
-    return render(request, 'reception/create_student.html', {
+    return render(request, 'reception/add_student.html', {
         'title': title,
         'form': form
     })

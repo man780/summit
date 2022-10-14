@@ -33,7 +33,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <a href="{% url 'reception:createGroup' %}" class="btn btn-primary create-group">Create group</a>
+            <a href="{% url 'reception:add_group' %}" class="btn btn-primary create-group">Create group</a>
         </div>
     </div>
     <div class="row">
@@ -79,7 +79,7 @@
 <script>
 $(document).ready(function(){
     jQuery( ".button" ).on( "click", function() {
-        window.location.replace("{% url 'reception:createGroup' %}")
+        window.location.replace("{% url 'reception:add_group' %}")
     });
     jQuery( ".full" ).on( "click", function() {
         let group_id = $(this).attr("data-group-id");

@@ -107,9 +107,9 @@
                     <i class="fas fa-star"></i>
                 </a>
                 {%endif%}
-                <a href="{% url 'reception:editStudent' student_id=student.id %}"><i class="fas fa-edit"></i></a>
-                <a href="{% url 'reception:deleteStudent' student_id=student.id %}"><i class="fas fa-trash"></i></a>
-                <a href="{% url 'reception:studentPodo' student_id=student.id %}">
+                <a href="{% url 'reception:edit_student' student_id=student.id %}"><i class="fas fa-edit"></i></a>
+                <a href="{% url 'reception:delete_student' student_id=student.id %}"><i class="fas fa-trash"></i></a>
+                <a href="{% url 'reception:student_podo' student_id=student.id %}">
                     PODO
                 </a>
             </td>

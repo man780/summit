@@ -58,7 +58,7 @@ def groups(request):
                   })
 
 
-def create_group(request):
+def add_group(request):
     form = GroupCreateForm(data=request.GET)
 
     if request.method == 'POST':
