@@ -1,19 +1,18 @@
-from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
-from django.contrib import messages
-from django.db.models import Prefetch
-from django.core import serializers
-from django.http import JsonResponse, HttpResponse
+import datetime
+import calendar
 
-from refs.models import Phones, PreferDays, PreferTimes
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from django.http import JsonResponse
+
+from refs.models import Phones, PreferTimes
 from finance.models import Payment, WantPay
 from .forms import StudentsCreateForm, GroupCreateForm
-from .models import Students, Group, StudentTransferGroup, Room, StudentLessons, Lost
-
-import datetime
+from .models import Students, Group, StudentTransferGroup, Room, StudentLessons
 
 
 def reception(request):
-    students = Students.objects.filter(status=None).all()
+    students = Students.objects.filter(status=0).all()
     if request.GET:
         students = students.filter()
     return render(request,
@@ -23,7 +22,7 @@ def reception(request):
                   })
 
 
-def createStudent(request):
+def create_student(request):
     form = StudentsCreateForm(data=request.GET)
 
     if request.method == 'POST':
@@ -34,7 +33,7 @@ def createStudent(request):
             new_student = form.save(commit=False)
             new_student.created_by = request.user
             new_student.status = 0
-            new_student.save(commit=False)
+            new_student.save()
 
             student_data = request.POST
             phone_list = student_data.getlist('phone')
@@ -44,7 +43,7 @@ def createStudent(request):
                     phone = Phones(name=relation_list[i], number=phone_list[i])
                     phone.save()
                     new_student.phone.add(phone)
-                new_student.save(commit=True)
+                new_student.save()
             else:
                 messages.success(request, 'Student is not created')
                 # new_student.rollback()
@@ -53,10 +52,14 @@ def createStudent(request):
             messages.success(request, 'Student added successfully')
             return redirect('reception:reception')
 
-    return render(request, 'reception/createStudent.html', {'form': form})
+    title = 'Add student'
+    return render(request, 'reception/create_student.html', {
+        'form': form,
+        'title': title
+    })
 
 
-def editStudent(request, student_id):
+def edit_student(request, student_id):
 
     student = get_object_or_404(Students, id=student_id)
     form = StudentsCreateForm(request.POST or None, instance=student)
@@ -64,7 +67,7 @@ def editStudent(request, student_id):
         # Форма отправлена.
         form = StudentsCreateForm(data=request.POST, instance=student)
         if form.is_valid():
-            student = form.save(commit=False)
+            student = form.save()
             student.save()
 
             studentData = request.POST
@@ -78,15 +81,14 @@ def editStudent(request, student_id):
 
             messages.success(request, 'Student added successfully')
             return redirect('reception:reception')
+    title = 'Edit student'
+    return render(request, 'reception/create_student.html', {
+        'title': title,
+        'form': form
+    })
 
-    return render(request,
-              'reception/createStudent.html',
-              {
-                  'form': form
-              })
 
-
-def deleteStudent(request, student_id):
+def delete_student(request, student_id):
     student = get_object_or_404(Students, id=student_id)
 
     if request.method == "POST":
@@ -104,7 +106,7 @@ def deleteStudent(request, student_id):
     })
 
 
-def transferStudent2Group(request, student_id):
+def transfer_student_to_group(request, student_id):
 
     student = Students.objects.filter(id=student_id).get()
     if request.method == 'POST':
@@ -209,7 +211,7 @@ def groups(request):
                   })
 
 
-def createGroup(request):
+def create_group(request):
     form = GroupCreateForm(data=request.GET)
 
     if request.method == 'POST':
@@ -225,7 +227,7 @@ def createGroup(request):
             return redirect('reception:groups')
 
     return render(request,
-                  'reception/createGroup.html',
+                  'reception/create_group.html',
                   {
                       'form': form
                   })
@@ -347,9 +349,6 @@ def student_podo(request, student_id):
     return redirect('/main/first-lesson')
 
 
-import calendar
-
-
 def next_month_date(d):
     _year = d.year+(d.month//12)
     _month =  1 if (d.month//12) else d.month + 1
@@ -418,6 +417,3 @@ def second_lesson(request):
                       'students': students,
                       'title': 'Second Lesson Statistics',
                   })
-
-
-

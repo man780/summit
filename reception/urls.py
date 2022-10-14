@@ -6,17 +6,17 @@ app_name = 'reception'
 
 urlpatterns = [
     path('reception/', views.reception, name='reception'),
-    path('create-student/', views.createStudent, name='createStudent'),
-    path('edit-student/<int:student_id>/', views.editStudent, name='editStudent'),
-    path('delete-student/<int:student_id>/', views.deleteStudent, name='deleteStudent'),
+    path('create-student/', views.create_student, name='createStudent'),
+    path('edit-student/<int:student_id>/', views.edit_student, name='editStudent'),
+    path('delete-student/<int:student_id>/', views.delete_student, name='deleteStudent'),
     path('reception/studentAdd2Group/<int:student_id>/',
-         views.transferStudent2Group,
+         views.transfer_student_to_group,
          name='transferStudent2Group'),
     path('group/ajax/get/', views.get_group, name="get_ajax_group"),
     path('groups/', views.groups, name='groups'),
     path('group-show/<int:group_id>', views.group_show, name='group_show'),
     path('group-edit/<int:group_id>', views.group_edit, name='group_show'),
-    path('create-group/', views.createGroup, name='createGroup'),
+    path('create-group/', views.create_group, name='createGroup'),
 
     path('lost/', views.lost, name='lost'),
     path('new-groups/', views.new_groups, name='new_groups'),
