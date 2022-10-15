@@ -4,7 +4,7 @@
 
 ``` bash
 source venv/bin/activate
-pip install -r req.txt
+pip install -r requirements.txt
 
 python manage.py makemigrations
 python manage.py migrate
@@ -19,7 +19,11 @@ sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
 ```
 > For a detailed installation 
-"How To Set Up Django with Postgres, Nginx, and Gunicorn on Ubuntu 16.04"
-[guide](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04).
+"How To Set Up Django with Postgres, Nginx, and Gunicorn on Ubuntu 22.04"
+[guide](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-22-04).
 
-
+### If some changes in server just reset
+```
+git reset --hard HEAD
+git pull
+```
