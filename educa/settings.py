@@ -14,7 +14,7 @@ SECRET_KEY = 'ybx5d+youn7^%kho86%+%fenz8!&=jpwe%z7_@ygj7l9nskk*l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['64.227.116.70', '127.0.0.1', 'summit-education.uz', 'www.summit-education.uz']
+ALLOWED_HOSTS = ['159.89.24.63', '127.0.0.1', 'summit-education.uz', 'www.summit-education.uz']
 
 
 # Application definition
