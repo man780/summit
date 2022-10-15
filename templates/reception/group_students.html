@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}SE - Students{% endblock %}
+
+{% block content %}
+<h1>{{group}} students</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Full name</th>
+            <th>Phone</th>
+            <th>From date</th>
+            <th>To date</th>
+            <th>Lessons</th>
+            <th>Info</th>
+            <th>Note</th>
+            <th>Paid</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+
+        <tr class="podo">
+            <td>{{student.created_time}}</td>
+            <td>{{student.full_name}}</td>
+            <td>
+                {% for phone in student.phone.all %}
+                <span class="badge badge-primary">{{phone}}</span>
+                {% endfor %}
+            </td>
+            <td>{{student.payment_student.from_date}}</td>
+            <td>{{student.payment_student.to_date}}</td>
+            <td>12</td>
+            <td>
+                <span class="badge badge-info">Group: Current</span>
+                <span class="badge badge-info">{{student.payment_student.from_date}}</span>
+                <span class="badge badge-primary">{{student.payment_student.to_date}}</span>
+                <span class="badge badge-primary">Paid: 0</span>
+                <span class="badge badge-primary">Should pay: 0 UZS</span>
+                <a href="javascript:void(0);" class="btn btn-success pay" data-toggle="modal" data-target="#modal-default"
+                data-student-id="{{student.id}}">
+                    Pay
+                </a>
+            </td>
+            <td>{{student.note}}</td>
+            <td>
+                <div class="panel panel-success">
+                  <div class="panel-body">
+                    <span class="badge badge-info">{{student.group.name}}</span>
+                    <span class="badge badge-info">{{student.group.teacher.full_name}}</span>
+                    <span class="badge badge-primary">{{student.group.days}} {{student.group.times}}</span>
+                    <span class="badge badge-primary">{{student.group.level}}: {{student.group.sub}}</span>
+                  </div>
+                </div>
+            </td>
+            <td>
+                <a href="{% url 'reception:edit_student' student_id=student.id %}"><i class="fas fa-edit"></i></a>
+                <a href="{% url 'reception:delete_student' student_id=student.id %}"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

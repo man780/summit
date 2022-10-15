@@ -130,5 +130,5 @@ def group_show(request, group_id):
         'students': students
     }
     return render(request,
-                  'teacher/group_students_table.html',
+                  'reception/group_students.html',
                   data_dict)
