@@ -1,0 +1,557 @@
+[
+  {
+    "model": "reception.teacher",
+    "pk": 1,
+    "fields": {
+      "first_name": "Murod",
+      "last_name": "Tatibaev",
+      "phone": "8990031112",
+      "note": "some",
+      "date_birth": "2022-03-13",
+      "user": 1,
+      "created_time": "2022-03-13T10:49:03.355Z",
+      "created_by": 1
+    }
+  },
+  {
+    "model": "reception.room",
+    "pk": 1,
+    "fields": {
+      "name": "Room 1"
+    }
+  },
+  {
+    "model": "reception.room",
+    "pk": 2,
+    "fields": {
+      "name": "Room 2"
+    }
+  },
+  {
+    "model": "reception.group",
+    "pk": 1,
+    "fields": {
+      "name": "First group",
+      "group_type": 2,
+      "teacher": 1,
+      "room": 1,
+      "level": 3,
+      "days": 1,
+      "times": 1,
+      "status": 1,
+      "place_count": 15,
+      "sub": 1,
+      "start_date": "2022-03-13T15:50:02Z",
+      "created_time": "2022-03-13T10:50:30.422Z",
+      "created_by": 1
+    }
+  },
+  {
+    "model": "reception.group",
+    "pk": 2,
+    "fields": {
+      "name": "Second group",
+      "group_type": 2,
+      "teacher": 1,
+      "room": 1,
+      "level": 1,
+      "days": 1,
+      "times": 3,
+      "status": 1,
+      "place_count": 14,
+      "sub": 1,
+      "start_date": null,
+      "created_time": "2022-03-13T12:44:51.371Z",
+      "created_by": 1
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 1,
+    "fields": {
+      "first_name": "Elyor",
+      "last_name": "Arslonov",
+      "user": null,
+      "come_from": 3,
+      "level": 3,
+      "is_podo": false,
+      "group": 1,
+      "group_type": 2,
+      "date_birth": "2000-04-04",
+      "note": "test",
+      "is_old": 2,
+      "sub": null,
+      "status": 40,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-03-13T10:47:14.651Z",
+      "created_by": 1,
+      "phone": [
+        27
+      ],
+      "prefer_day": [
+        1,
+        2
+      ],
+      "prefer_time": [
+        1,
+        2,
+        3,
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 2,
+    "fields": {
+      "first_name": "Malika",
+      "last_name": "Temirova",
+      "user": null,
+      "come_from": 6,
+      "level": 3,
+      "is_podo": false,
+      "group": 1,
+      "group_type": 2,
+      "date_birth": "2001-03-14",
+      "note": "test",
+      "is_old": 2,
+      "sub": null,
+      "status": 40,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-03-13T12:15:34.241Z",
+      "created_by": 1,
+      "phone": [
+        29,
+        28
+      ],
+      "prefer_day": [
+        1,
+        2
+      ],
+      "prefer_time": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 3,
+    "fields": {
+      "first_name": "Elbek",
+      "last_name": "Komilov",
+      "user": null,
+      "come_from": 3,
+      "level": 5,
+      "is_podo": false,
+      "group": null,
+      "group_type": 2,
+      "date_birth": "2000-04-04",
+      "note": "павы",
+      "is_old": 2,
+      "sub": null,
+      "status": 0,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-03-13T12:37:37.994Z",
+      "created_by": 1,
+      "phone": [
+        3
+      ],
+      "prefer_day": [
+        1,
+        2
+      ],
+      "prefer_time": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 4,
+    "fields": {
+      "first_name": "Manzura",
+      "last_name": "Salieva",
+      "user": null,
+      "come_from": 1,
+      "level": 1,
+      "is_podo": false,
+      "group": null,
+      "group_type": 2,
+      "date_birth": "2000-04-04",
+      "note": "павып",
+      "is_old": 2,
+      "sub": null,
+      "status": 0,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-03-13T12:38:55.488Z",
+      "created_by": 1,
+      "phone": [
+        8
+      ],
+      "prefer_day": [
+        1,
+        2
+      ],
+      "prefer_time": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 5,
+    "fields": {
+      "first_name": "Guli",
+      "last_name": "Alimova",
+      "user": null,
+      "come_from": 4,
+      "level": 5,
+      "is_podo": false,
+      "group": null,
+      "group_type": 2,
+      "date_birth": "2000-04-04",
+      "note": "",
+      "is_old": 2,
+      "sub": null,
+      "status": 0,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-03-13T12:39:20.095Z",
+      "created_by": 1,
+      "phone": [
+        13
+      ],
+      "prefer_day": [
+        1,
+        2
+      ],
+      "prefer_time": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 6,
+    "fields": {
+      "first_name": "Olim",
+      "last_name": "Baxromov",
+      "user": null,
+      "come_from": 3,
+      "level": 1,
+      "is_podo": false,
+      "group": null,
+      "group_type": 2,
+      "date_birth": "2000-04-04",
+      "note": "",
+      "is_old": 2,
+      "sub": null,
+      "status": 0,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-10-14T20:45:14.097Z",
+      "created_by": 1,
+      "phone": [
+        30,
+        31
+      ],
+      "prefer_day": [
+        1,
+        2
+      ],
+      "prefer_time": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 7,
+    "fields": {
+      "first_name": "Baxrom",
+      "last_name": "Umirov",
+      "user": null,
+      "come_from": 3,
+      "level": 1,
+      "is_podo": false,
+      "group": null,
+      "group_type": 2,
+      "date_birth": "2000-04-04",
+      "note": "",
+      "is_old": 2,
+      "sub": null,
+      "status": 0,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-10-14T20:45:30.393Z",
+      "created_by": 1,
+      "phone": [
+        32,
+        33
+      ],
+      "prefer_day": [],
+      "prefer_time": []
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 8,
+    "fields": {
+      "first_name": "Baxrom",
+      "last_name": "Azizov",
+      "user": null,
+      "come_from": 4,
+      "level": 1,
+      "is_podo": false,
+      "group": null,
+      "group_type": 2,
+      "date_birth": "2001-03-14",
+      "note": "",
+      "is_old": 2,
+      "sub": null,
+      "status": 0,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-10-14T20:46:39.259Z",
+      "created_by": 1,
+      "phone": [
+        34,
+        35
+      ],
+      "prefer_day": [],
+      "prefer_time": []
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 9,
+    "fields": {
+      "first_name": "Aziz",
+      "last_name": "Azizov",
+      "user": null,
+      "come_from": 2,
+      "level": 1,
+      "is_podo": false,
+      "group": 1,
+      "group_type": 2,
+      "date_birth": "2001-03-21",
+      "note": "",
+      "is_old": 2,
+      "sub": null,
+      "status": 2,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-10-14T21:01:07.125Z",
+      "created_by": 1,
+      "phone": [
+        37,
+        36
+      ],
+      "prefer_day": [],
+      "prefer_time": []
+    }
+  },
+  {
+    "model": "reception.studenttransfergroup",
+    "pk": 1,
+    "fields": {
+      "student": 1,
+      "group": 1,
+      "sequence": 1,
+      "date": "2022-03-14",
+      "created_time": "2022-03-13T10:51:25.679Z",
+      "status": false
+    }
+  },
+  {
+    "model": "reception.studenttransfergroup",
+    "pk": 2,
+    "fields": {
+      "student": 1,
+      "group": 1,
+      "sequence": 1,
+      "date": "2022-03-14",
+      "created_time": "2022-03-13T10:52:34.847Z",
+      "status": true
+    }
+  },
+  {
+    "model": "reception.studenttransfergroup",
+    "pk": 3,
+    "fields": {
+      "student": 2,
+      "group": 1,
+      "sequence": 2,
+      "date": "2022-03-14",
+      "created_time": "2022-03-13T12:16:22.490Z",
+      "status": true
+    }
+  },
+  {
+    "model": "reception.studenttransfergroup",
+    "pk": 4,
+    "fields": {
+      "student": 9,
+      "group": 1,
+      "sequence": 3,
+      "date": "2022-12-17",
+      "created_time": "2022-10-14T21:19:37.488Z",
+      "status": true
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 1,
+    "fields": {
+      "student": 1,
+      "group": 1,
+      "date": "2022-03-14",
+      "is_first": true,
+      "is_second": null,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 2,
+    "fields": {
+      "student": 1,
+      "group": 1,
+      "date": "2022-03-14",
+      "is_first": true,
+      "is_second": null,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 3,
+    "fields": {
+      "student": 1,
+      "group": 1,
+      "date": "2022-03-13",
+      "is_first": true,
+      "is_second": false,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 4,
+    "fields": {
+      "student": 2,
+      "group": 1,
+      "date": "2022-03-14",
+      "is_first": true,
+      "is_second": null,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 5,
+    "fields": {
+      "student": 2,
+      "group": 1,
+      "date": "2022-03-13",
+      "is_first": true,
+      "is_second": false,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 6,
+    "fields": {
+      "student": 2,
+      "group": 1,
+      "date": "2022-03-13",
+      "is_first": true,
+      "is_second": false,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 7,
+    "fields": {
+      "student": 2,
+      "group": 1,
+      "date": "2022-03-13",
+      "is_first": true,
+      "is_second": false,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 8,
+    "fields": {
+      "student": 9,
+      "group": 1,
+      "date": "2022-12-17",
+      "is_first": true,
+      "is_second": null,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 9,
+    "fields": {
+      "student": 9,
+      "group": 1,
+      "date": "2022-10-15",
+      "is_first": true,
+      "is_second": false,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 10,
+    "fields": {
+      "student": 9,
+      "group": 1,
+      "date": "2022-10-15",
+      "is_first": true,
+      "is_second": false,
+      "status": null
+    }
+  }
+]
