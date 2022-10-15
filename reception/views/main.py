@@ -3,6 +3,14 @@ from django.shortcuts import render
 from reception.models import Students
 
 
+def error_500(request):
+    return render(request, '500.html')
+
+
+def error_404(request):
+    return render(request, '404.html')
+
+
 def reception(request):
     students = Students.objects.filter(status=0).all()
     if request.GET:
