@@ -27,7 +27,7 @@ urlpatterns = [
     path('group/ajax/get/', groups.get_group, name="get_ajax_group"),
     path('groups/', groups.groups, name='groups'),
     path('group-show/<int:group_id>', groups.group_show, name='group_show'),
-    path('group-edit/<int:group_id>', groups.group_edit, name='group_show'),
+    path('group-edit/<int:group_id>', groups.group_edit, name='group_edit'),
     path('add-group/', groups.add_group, name='add_group'),
     path('new-groups/', groups.new_groups, name='new_groups'),
 ]

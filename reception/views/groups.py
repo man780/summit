@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 
 from reception.models import Students, Group, Room, PreferTimes
 from reception.forms import GroupCreateForm
@@ -73,11 +74,43 @@ def add_group(request):
             # Перенаправляем пользователя на страницу груп.
             return redirect('reception:groups')
 
+    title = 'Add group'
+    action_url = reverse('reception:add_group')
     return render(request,
-                  'reception/create_group.html',
+                  'reception/group_add_edit.html',
                   {
+                      'action_url': action_url,
+                      'title': title,
                       'form': form
                   })
+
+
+def group_edit(request, group_id):
+    group = get_object_or_404(Group, id=group_id)
+    form = GroupCreateForm(request.POST or None, instance=group)
+
+    if request.method == 'POST':
+        # Форма отправлена.
+        form = GroupCreateForm(data=request.POST, instance=group)
+
+        if form.is_valid():
+            group = form.save()
+            group.save()
+            messages.success(request, 'Group edit successfully')
+            # Перенаправляем пользователя на страницу груп.
+            return redirect('reception:groups')
+
+    title = 'Edit group'
+    action_url = reverse('reception:group_edit', kwargs={'group_id': group.id})
+    data_dict = {
+        'action_url': action_url,
+        'title': title,
+        'form': form
+    }
+
+    return render(request,
+                  'reception/group_add_edit.html',
+                  data_dict)
 
 
 def new_groups(request):
@@ -98,14 +131,4 @@ def group_show(request, group_id):
     }
     return render(request,
                   'teacher/group_students_table.html',
-                  data_dict)
-
-
-def group_edit(request, group_id):
-    group = get_object_or_404(Group, id=group_id)
-    data_dict = {
-        'group': group,
-    }
-    return render(request,
-                  'reception/group_edit.html',
                   data_dict)

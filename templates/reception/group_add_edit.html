@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}SE - Create Student{% endblock %}
+{% block title %}SE - {{title}}{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -8,14 +8,14 @@
         <div class="card card-primary">
             <div class="card-header">
                 <div class="card-title">
-                    <h3>Create Group</h3>
+                    <h3>{{title}}</h3>
                 </div>
             </div>
             <div class="card-body">
-                <form action="." class="post" method="POST">
+                <form action="{{action_url}}" class="post" method="POST">
                     {% csrf_token %}
                     {% if message %}
-                        <p class="login-box-msg" style="color: red;">{{ message }}</p>
+                    <p class="login-box-msg" style="color: red;">{{ message }}</p>
                     {% endif %}
                     {% for field in form %}
                     <div class="form-group row form-row field-name">
@@ -30,7 +30,7 @@
                     </div>
                     {% endfor %}
 
-                    <input type="submit" value="Create" class="btn btn-primary">
+                    <input type="submit" value="{{title}}" class="btn btn-primary">
                     <a href="{% url 'reception:groups' %}" class="btn btn-danger">Back</a>
                 </form>
             </div>
