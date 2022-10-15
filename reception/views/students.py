@@ -40,7 +40,7 @@ def add_student(request):
             return redirect('reception:reception')
 
     title = 'Add student'
-    return render(request, 'reception/add_student.html', {
+    return render(request, 'reception/student_add_edit.html', {
         'form': form,
         'title': title
     })
@@ -69,7 +69,7 @@ def edit_student(request, student_id):
             messages.success(request, 'Student added successfully')
             return redirect('reception:reception')
     title = 'Edit student'
-    return render(request, 'reception/add_student.html', {
+    return render(request, 'reception/student_add_edit.html', {
         'title': title,
         'form': form
     })
