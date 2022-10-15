@@ -1,5 +1,5 @@
 server {
-    server_name 159.89.24.63;
+    server_name 159.89.24.63 summit-education.uz www.summit-education.uz;
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
