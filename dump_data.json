@@ -1,0 +1,1363 @@
+[
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2022-03-13T07:44:01.667Z",
+      "user": 1,
+      "content_type": 16,
+      "object_id": "1",
+      "object_repr": "summit-admin",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2022-03-13T10:49:03.356Z",
+      "user": 1,
+      "content_type": 22,
+      "object_id": "1",
+      "object_repr": "Tatibaev Murod",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2022-03-13T10:49:16.221Z",
+      "user": 1,
+      "content_type": 20,
+      "object_id": "1",
+      "object_repr": "Room 1",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2022-03-13T10:49:22.841Z",
+      "user": 1,
+      "content_type": 20,
+      "object_id": "2",
+      "object_repr": "Room 2",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2022-03-13T10:50:30.422Z",
+      "user": 1,
+      "content_type": 19,
+      "object_id": "1",
+      "object_repr": "First group",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+      "action_time": "2022-10-14T20:47:45.561Z",
+      "user": 1,
+      "content_type": 21,
+      "object_id": "6",
+      "object_repr": "Baxromov Olim",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Prefer day\", \"Prefer time\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+      "action_time": "2022-10-14T20:48:20.556Z",
+      "user": 1,
+      "content_type": 21,
+      "object_id": "5",
+      "object_repr": "Alimova Guli",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Phone\", \"Prefer day\", \"Prefer time\", \"Student status\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+      "action_time": "2022-10-14T20:48:51.481Z",
+      "user": 1,
+      "content_type": 21,
+      "object_id": "4",
+      "object_repr": "Salieva Manzura",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Phone\", \"Prefer day\", \"Prefer time\", \"Student status\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+      "action_time": "2022-10-14T20:49:14.418Z",
+      "user": 1,
+      "content_type": 21,
+      "object_id": "2",
+      "object_repr": "Temirova Malika",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Prefer day\", \"Prefer time\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+      "action_time": "2022-10-14T20:50:06.657Z",
+      "user": 1,
+      "content_type": 21,
+      "object_id": "3",
+      "object_repr": "Komilov Elbek",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Phone\", \"Prefer day\", \"Prefer time\", \"Student status\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+      "action_time": "2022-10-14T20:50:44.783Z",
+      "user": 1,
+      "content_type": 21,
+      "object_id": "3",
+      "object_repr": "Komilov Elbek",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Phone\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+      "action_time": "2022-10-14T20:59:38.880Z",
+      "user": 1,
+      "content_type": 21,
+      "object_id": "1",
+      "object_repr": "Arslonov Elyor",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Prefer day\", \"Prefer time\"]}}]"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "kbgh3zu0lfxdnc55tt4uoy6fohinpz0s",
+    "fields": {
+      "session_data": ".eJxVjEEOgjAQRe_StWmKQ6fUpXvO0MxMp4IaSCisjHdXEha6_e-9_zKJtnVIW9UljdlcTGNOvxuTPHTaQb7TdJutzNO6jGx3xR602n7O-rwe7t_BQHX41gG51Ri9UHZSBAkQQsbOq0DM7BqN3CJ76M4hqhAXLBqptC4QAKJ5fwD8HTh6:1nhvxl:Qb2lzS3tpnZ3FNy6lHCJLzM24qO9TZTf5yVsH1hW8kM",
+      "expire_date": "2022-05-06T16:16:53.361Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "mk4u59npf2al78vwrge2oa525dgsx03n",
+    "fields": {
+      "session_data": ".eJxVjEEOgjAQRe_StWmKQ6fUpXvO0MxMp4IaSCisjHdXEha6_e-9_zKJtnVIW9UljdlcTGNOvxuTPHTaQb7TdJutzNO6jGx3xR602n7O-rwe7t_BQHX41gG51Ri9UHZSBAkQQsbOq0DM7BqN3CJ76M4hqhAXLBqptC4QAKJ5fwD8HTh6:1no5Q3:91W5PRyoqNNqvCGYB9jkAOlWwaSQRn2P-wLNDHWJesU",
+      "expire_date": "2022-05-23T15:35:31.521Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "obhe01tyx9tyjedurjxy680kbu9rnnbl",
+    "fields": {
+      "session_data": ".eJxVjEEOgjAQRe_StWmKQ6fUpXvO0MxMp4IaSCisjHdXEha6_e-9_zKJtnVIW9UljdlcTGNOvxuTPHTaQb7TdJutzNO6jGx3xR602n7O-rwe7t_BQHX41gG51Ri9UHZSBAkQQsbOq0DM7BqN3CJ76M4hqhAXLBqptC4QAKJ5fwD8HTh6:1oNC1s:iJrxLfCQpwTP6767GIehBW5AtLYioBBZiu5hrymv7O8",
+      "expire_date": "2022-08-28T11:43:40.293Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "t5ishuy61wj6tt4ofpqdw1qu30fcdqml",
+    "fields": {
+      "session_data": ".eJxVjEEOgjAQRe_StWmKQ6fUpXvO0MxMp4IaSCisjHdXEha6_e-9_zKJtnVIW9UljdlcTGNOvxuTPHTaQb7TdJutzNO6jGx3xR602n7O-rwe7t_BQHX41gG51Ri9UHZSBAkQQsbOq0DM7BqN3CJ76M4hqhAXLBqptC4QAKJ5fwD8HTh6:1nTLpp:tbzSaeDIprael4vnwEDBZYEMgqSTxFeW-MlM5mKspF0",
+      "expire_date": "2022-03-27T10:52:25.752Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "y2q9050q8liu0s3eyycqmh5l4dgotyga",
+    "fields": {
+      "session_data": ".eJxVjEEOgjAQRe_StWmKQ6fUpXvO0MxMp4IaSCisjHdXEha6_e-9_zKJtnVIW9UljdlcTGNOvxuTPHTaQb7TdJutzNO6jGx3xR602n7O-rwe7t_BQHX41gG51Ri9UHZSBAkQQsbOq0DM7BqN3CJ76M4hqhAXLBqptC4QAKJ5fwD8HTh6:1ojlFO:mlUDGg442eMWOtLP23bU63pJDUY312FMKVFPyYOdPpE",
+      "expire_date": "2022-10-29T17:46:54.320Z"
+    }
+  },
+  {
+    "model": "reception.teacher",
+    "pk": 1,
+    "fields": {
+      "first_name": "Murod",
+      "last_name": "Tatibaev",
+      "phone": "8990031112",
+      "note": "some",
+      "date_birth": "2022-03-13",
+      "user": 1,
+      "created_time": "2022-03-13T10:49:03.355Z",
+      "created_by": 1
+    }
+  },
+  {
+    "model": "reception.room",
+    "pk": 1,
+    "fields": {
+      "name": "Room 1"
+    }
+  },
+  {
+    "model": "reception.room",
+    "pk": 2,
+    "fields": {
+      "name": "Room 2"
+    }
+  },
+  {
+    "model": "reception.group",
+    "pk": 1,
+    "fields": {
+      "name": "First group",
+      "group_type": 2,
+      "teacher": 1,
+      "room": 1,
+      "level": 3,
+      "days": 1,
+      "times": 1,
+      "status": 1,
+      "place_count": 15,
+      "sub": 1,
+      "start_date": "2022-03-13T15:50:02Z",
+      "created_time": "2022-03-13T10:50:30.422Z",
+      "created_by": 1
+    }
+  },
+  {
+    "model": "reception.group",
+    "pk": 2,
+    "fields": {
+      "name": "Second group",
+      "group_type": 2,
+      "teacher": 1,
+      "room": 1,
+      "level": 1,
+      "days": 1,
+      "times": 3,
+      "status": 1,
+      "place_count": 14,
+      "sub": 1,
+      "start_date": null,
+      "created_time": "2022-03-13T12:44:51.371Z",
+      "created_by": 1
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 1,
+    "fields": {
+      "first_name": "Elyor",
+      "last_name": "Arslonov",
+      "user": null,
+      "come_from": 3,
+      "level": 3,
+      "is_podo": false,
+      "group": 1,
+      "group_type": 2,
+      "date_birth": "2000-04-04",
+      "note": "test",
+      "is_old": 2,
+      "sub": null,
+      "status": 40,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-03-13T10:47:14.651Z",
+      "created_by": 1,
+      "phone": [
+        27
+      ],
+      "prefer_day": [
+        1,
+        2
+      ],
+      "prefer_time": [
+        1,
+        2,
+        3,
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 2,
+    "fields": {
+      "first_name": "Malika",
+      "last_name": "Temirova",
+      "user": null,
+      "come_from": 6,
+      "level": 3,
+      "is_podo": false,
+      "group": 1,
+      "group_type": 2,
+      "date_birth": "2001-03-14",
+      "note": "test",
+      "is_old": 2,
+      "sub": null,
+      "status": 40,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-03-13T12:15:34.241Z",
+      "created_by": 1,
+      "phone": [
+        29,
+        28
+      ],
+      "prefer_day": [
+        1,
+        2
+      ],
+      "prefer_time": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 3,
+    "fields": {
+      "first_name": "Elbek",
+      "last_name": "Komilov",
+      "user": null,
+      "come_from": 3,
+      "level": 5,
+      "is_podo": false,
+      "group": null,
+      "group_type": 2,
+      "date_birth": "2000-04-04",
+      "note": "павы",
+      "is_old": 2,
+      "sub": null,
+      "status": 0,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-03-13T12:37:37.994Z",
+      "created_by": 1,
+      "phone": [
+        3
+      ],
+      "prefer_day": [
+        1,
+        2
+      ],
+      "prefer_time": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 4,
+    "fields": {
+      "first_name": "Manzura",
+      "last_name": "Salieva",
+      "user": null,
+      "come_from": 1,
+      "level": 1,
+      "is_podo": false,
+      "group": null,
+      "group_type": 2,
+      "date_birth": "2000-04-04",
+      "note": "павып",
+      "is_old": 2,
+      "sub": null,
+      "status": 0,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-03-13T12:38:55.488Z",
+      "created_by": 1,
+      "phone": [
+        8
+      ],
+      "prefer_day": [
+        1,
+        2
+      ],
+      "prefer_time": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 5,
+    "fields": {
+      "first_name": "Guli",
+      "last_name": "Alimova",
+      "user": null,
+      "come_from": 4,
+      "level": 5,
+      "is_podo": false,
+      "group": null,
+      "group_type": 2,
+      "date_birth": "2000-04-04",
+      "note": "",
+      "is_old": 2,
+      "sub": null,
+      "status": 0,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-03-13T12:39:20.095Z",
+      "created_by": 1,
+      "phone": [
+        13
+      ],
+      "prefer_day": [
+        1,
+        2
+      ],
+      "prefer_time": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 6,
+    "fields": {
+      "first_name": "Olim",
+      "last_name": "Baxromov",
+      "user": null,
+      "come_from": 3,
+      "level": 1,
+      "is_podo": false,
+      "group": null,
+      "group_type": 2,
+      "date_birth": "2000-04-04",
+      "note": "",
+      "is_old": 2,
+      "sub": null,
+      "status": 0,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-10-14T20:45:14.097Z",
+      "created_by": 1,
+      "phone": [
+        30,
+        31
+      ],
+      "prefer_day": [
+        1,
+        2
+      ],
+      "prefer_time": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 7,
+    "fields": {
+      "first_name": "Baxrom",
+      "last_name": "Umirov",
+      "user": null,
+      "come_from": 3,
+      "level": 1,
+      "is_podo": false,
+      "group": null,
+      "group_type": 2,
+      "date_birth": "2000-04-04",
+      "note": "",
+      "is_old": 2,
+      "sub": null,
+      "status": 0,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-10-14T20:45:30.393Z",
+      "created_by": 1,
+      "phone": [
+        32,
+        33
+      ],
+      "prefer_day": [],
+      "prefer_time": []
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 8,
+    "fields": {
+      "first_name": "Baxrom",
+      "last_name": "Azizov",
+      "user": null,
+      "come_from": 4,
+      "level": 1,
+      "is_podo": false,
+      "group": null,
+      "group_type": 2,
+      "date_birth": "2001-03-14",
+      "note": "",
+      "is_old": 2,
+      "sub": null,
+      "status": 0,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-10-14T20:46:39.259Z",
+      "created_by": 1,
+      "phone": [
+        34,
+        35
+      ],
+      "prefer_day": [],
+      "prefer_time": []
+    }
+  },
+  {
+    "model": "reception.students",
+    "pk": 9,
+    "fields": {
+      "first_name": "Aziz",
+      "last_name": "Azizov",
+      "user": null,
+      "come_from": 2,
+      "level": 1,
+      "is_podo": false,
+      "group": 1,
+      "group_type": 2,
+      "date_birth": "2001-03-21",
+      "note": "",
+      "is_old": 2,
+      "sub": null,
+      "status": 2,
+      "status_p": false,
+      "status_r": false,
+      "created_time": "2022-10-14T21:01:07.125Z",
+      "created_by": 1,
+      "phone": [
+        37,
+        36
+      ],
+      "prefer_day": [],
+      "prefer_time": []
+    }
+  },
+  {
+    "model": "reception.studenttransfergroup",
+    "pk": 1,
+    "fields": {
+      "student": 1,
+      "group": 1,
+      "sequence": 1,
+      "date": "2022-03-14",
+      "created_time": "2022-03-13T10:51:25.679Z",
+      "status": false
+    }
+  },
+  {
+    "model": "reception.studenttransfergroup",
+    "pk": 2,
+    "fields": {
+      "student": 1,
+      "group": 1,
+      "sequence": 1,
+      "date": "2022-03-14",
+      "created_time": "2022-03-13T10:52:34.847Z",
+      "status": true
+    }
+  },
+  {
+    "model": "reception.studenttransfergroup",
+    "pk": 3,
+    "fields": {
+      "student": 2,
+      "group": 1,
+      "sequence": 2,
+      "date": "2022-03-14",
+      "created_time": "2022-03-13T12:16:22.490Z",
+      "status": true
+    }
+  },
+  {
+    "model": "reception.studenttransfergroup",
+    "pk": 4,
+    "fields": {
+      "student": 9,
+      "group": 1,
+      "sequence": 3,
+      "date": "2022-12-17",
+      "created_time": "2022-10-14T21:19:37.488Z",
+      "status": true
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 1,
+    "fields": {
+      "student": 1,
+      "group": 1,
+      "date": "2022-03-14",
+      "is_first": true,
+      "is_second": null,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 2,
+    "fields": {
+      "student": 1,
+      "group": 1,
+      "date": "2022-03-14",
+      "is_first": true,
+      "is_second": null,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 3,
+    "fields": {
+      "student": 1,
+      "group": 1,
+      "date": "2022-03-13",
+      "is_first": true,
+      "is_second": false,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 4,
+    "fields": {
+      "student": 2,
+      "group": 1,
+      "date": "2022-03-14",
+      "is_first": true,
+      "is_second": null,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 5,
+    "fields": {
+      "student": 2,
+      "group": 1,
+      "date": "2022-03-13",
+      "is_first": true,
+      "is_second": false,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 6,
+    "fields": {
+      "student": 2,
+      "group": 1,
+      "date": "2022-03-13",
+      "is_first": true,
+      "is_second": false,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 7,
+    "fields": {
+      "student": 2,
+      "group": 1,
+      "date": "2022-03-13",
+      "is_first": true,
+      "is_second": false,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 8,
+    "fields": {
+      "student": 9,
+      "group": 1,
+      "date": "2022-12-17",
+      "is_first": true,
+      "is_second": null,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 9,
+    "fields": {
+      "student": 9,
+      "group": 1,
+      "date": "2022-10-15",
+      "is_first": true,
+      "is_second": false,
+      "status": null
+    }
+  },
+  {
+    "model": "reception.studentlessons",
+    "pk": 10,
+    "fields": {
+      "student": 9,
+      "group": 1,
+      "date": "2022-10-15",
+      "is_first": true,
+      "is_second": false,
+      "status": null
+    }
+  },
+  {
+    "model": "refs.preferdays",
+    "pk": 1,
+    "fields": {
+      "name": "Monday, Wednesday, Friday"
+    }
+  },
+  {
+    "model": "refs.preferdays",
+    "pk": 2,
+    "fields": {
+      "name": "Tuesday, Thursday, Saturday"
+    }
+  },
+  {
+    "model": "refs.prefertimes",
+    "pk": 1,
+    "fields": {
+      "name": "9:00"
+    }
+  },
+  {
+    "model": "refs.prefertimes",
+    "pk": 2,
+    "fields": {
+      "name": "10:30"
+    }
+  },
+  {
+    "model": "refs.prefertimes",
+    "pk": 3,
+    "fields": {
+      "name": "12:00"
+    }
+  },
+  {
+    "model": "refs.prefertimes",
+    "pk": 4,
+    "fields": {
+      "name": "14:00"
+    }
+  },
+  {
+    "model": "refs.prefertimes",
+    "pk": 5,
+    "fields": {
+      "name": "15:30"
+    }
+  },
+  {
+    "model": "refs.prefertimes",
+    "pk": 6,
+    "fields": {
+      "name": "17:00"
+    }
+  },
+  {
+    "model": "refs.prefertimes",
+    "pk": 7,
+    "fields": {
+      "name": "18:30"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 1,
+    "fields": {
+      "name": "test",
+      "number": "33232"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 2,
+    "fields": {
+      "name": "Father",
+      "number": "+9989933991911"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 3,
+    "fields": {
+      "name": "test test est etst est etes test e",
+      "number": "5435435435"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 4,
+    "fields": {
+      "name": "testt1",
+      "number": "8990031112"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 5,
+    "fields": {
+      "name": "test2",
+      "number": "8990036543"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 6,
+    "fields": {
+      "name": "test3",
+      "number": "8990033214"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 7,
+    "fields": {
+      "name": "rtest4",
+      "number": "8990033214"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 8,
+    "fields": {
+      "name": "testt1",
+      "number": "8990031112"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 9,
+    "fields": {
+      "name": "test2",
+      "number": "8990036543"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 10,
+    "fields": {
+      "name": "test3",
+      "number": "8990033214"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 11,
+    "fields": {
+      "name": "rtest4",
+      "number": "8990033214"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 12,
+    "fields": {
+      "name": "Own",
+      "number": "8979991112"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 13,
+    "fields": {
+      "name": "Father",
+      "number": "8979993432"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 14,
+    "fields": {
+      "name": "Mother",
+      "number": "8979991324"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 15,
+    "fields": {
+      "name": "Own",
+      "number": "8990031112"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 16,
+    "fields": {
+      "name": "Own",
+      "number": "3543254325"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 17,
+    "fields": {
+      "name": "Own",
+      "number": "8994324324"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 18,
+    "fields": {
+      "name": "Own",
+      "number": "8990031112"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 19,
+    "fields": {
+      "name": "Father",
+      "number": "8990030000"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 20,
+    "fields": {
+      "name": "Mother",
+      "number": "8990031100"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 21,
+    "fields": {
+      "name": "Own",
+      "number": "8990037438"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 22,
+    "fields": {
+      "name": "Parents",
+      "number": "8997483984"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 23,
+    "fields": {
+      "name": "Father",
+      "number": "8994738909"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 26,
+    "fields": {
+      "name": "Own",
+      "number": "8990031453"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 27,
+    "fields": {
+      "name": "Own",
+      "number": "8990031112"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 28,
+    "fields": {
+      "name": "Own",
+      "number": "8990031133"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 29,
+    "fields": {
+      "name": "Mother",
+      "number": "8990031143"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 30,
+    "fields": {
+      "name": "Own",
+      "number": "8990030000"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 31,
+    "fields": {
+      "name": "Own2",
+      "number": "8990030001"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 32,
+    "fields": {
+      "name": "Own",
+      "number": "8990030000"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 33,
+    "fields": {
+      "name": "Own2",
+      "number": "8990030001"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 34,
+    "fields": {
+      "name": "Own",
+      "number": "998990010110"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 35,
+    "fields": {
+      "name": "Own2",
+      "number": "998990010120"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 36,
+    "fields": {
+      "name": "Own",
+      "number": "998991233212"
+    }
+  },
+  {
+    "model": "refs.phones",
+    "pk": 37,
+    "fields": {
+      "name": "Father",
+      "number": "998991233243"
+    }
+  },
+  {
+    "model": "refs.levels",
+    "pk": 1,
+    "fields": {
+      "name": "Beginner"
+    }
+  },
+  {
+    "model": "refs.levels",
+    "pk": 2,
+    "fields": {
+      "name": "Pre intermediet"
+    }
+  },
+  {
+    "model": "refs.levels",
+    "pk": 3,
+    "fields": {
+      "name": "Intermediet"
+    }
+  },
+  {
+    "model": "refs.levels",
+    "pk": 4,
+    "fields": {
+      "name": "Upper intermediet"
+    }
+  },
+  {
+    "model": "refs.levels",
+    "pk": 5,
+    "fields": {
+      "name": "Advanced"
+    }
+  },
+  {
+    "model": "refs.statuses",
+    "pk": 1,
+    "fields": {
+      "name": "Actual"
+    }
+  },
+  {
+    "model": "refs.statuses",
+    "pk": 2,
+    "fields": {
+      "name": "Want to study"
+    }
+  },
+  {
+    "model": "refs.statuses",
+    "pk": 3,
+    "fields": {
+      "name": "Lost"
+    }
+  },
+  {
+    "model": "refs.studentstatus",
+    "pk": 1,
+    "fields": {
+      "name": "New"
+    }
+  },
+  {
+    "model": "refs.isold",
+    "pk": 1,
+    "fields": {
+      "name": "Old Student"
+    }
+  },
+  {
+    "model": "refs.isold",
+    "pk": 2,
+    "fields": {
+      "name": "New Student"
+    }
+  },
+  {
+    "model": "refs.grouptypes",
+    "pk": 1,
+    "fields": {
+      "name": "Online"
+    }
+  },
+  {
+    "model": "refs.grouptypes",
+    "pk": 2,
+    "fields": {
+      "name": "Group"
+    }
+  },
+  {
+    "model": "refs.grouptypes",
+    "pk": 3,
+    "fields": {
+      "name": "Individual"
+    }
+  },
+  {
+    "model": "refs.comefrom",
+    "pk": 1,
+    "fields": {
+      "name": "Instagram"
+    }
+  },
+  {
+    "model": "refs.comefrom",
+    "pk": 2,
+    "fields": {
+      "name": "Telegram"
+    }
+  },
+  {
+    "model": "refs.comefrom",
+    "pk": 3,
+    "fields": {
+      "name": "Facebook"
+    }
+  },
+  {
+    "model": "refs.comefrom",
+    "pk": 4,
+    "fields": {
+      "name": "Friends"
+    }
+  },
+  {
+    "model": "refs.comefrom",
+    "pk": 5,
+    "fields": {
+      "name": "Unknown"
+    }
+  },
+  {
+    "model": "refs.comefrom",
+    "pk": 6,
+    "fields": {
+      "name": "Google or Internet"
+    }
+  },
+  {
+    "model": "refs.comefrom",
+    "pk": 7,
+    "fields": {
+      "name": "LOGO"
+    }
+  },
+  {
+    "model": "refs.comefrom",
+    "pk": 8,
+    "fields": {
+      "name": "Old Students"
+    }
+  },
+  {
+    "model": "refs.comefrom",
+    "pk": 9,
+    "fields": {
+      "name": "VK"
+    }
+  },
+  {
+    "model": "refs.sub",
+    "pk": 1,
+    "fields": {
+      "name": "Start"
+    }
+  },
+  {
+    "model": "refs.sub",
+    "pk": 2,
+    "fields": {
+      "name": "Mid"
+    }
+  },
+  {
+    "model": "refs.sub",
+    "pk": 3,
+    "fields": {
+      "name": "Fin"
+    }
+  },
+  {
+    "model": "finance.payment",
+    "pk": 1,
+    "fields": {
+      "date": "2022-03-13",
+      "student": 1,
+      "note": "",
+      "amount": 0,
+      "type": null,
+      "status": 0,
+      "from_date": "2022-03-14",
+      "to_date": "2022-04-01",
+      "want_pay_next_month": true,
+      "created": "2022-03-13T10:52:34.848Z",
+      "updated": "2022-03-13T10:52:34.849Z"
+    }
+  },
+  {
+    "model": "finance.payment",
+    "pk": 2,
+    "fields": {
+      "date": "2022-03-13",
+      "student": 1,
+      "note": "",
+      "amount": 450000,
+      "type": 2,
+      "status": 2,
+      "from_date": "2022-03-14",
+      "to_date": "2022-04-14",
+      "want_pay_next_month": false,
+      "created": "2022-03-13T11:26:35.001Z",
+      "updated": "2022-03-13T11:26:35.001Z"
+    }
+  },
+  {
+    "model": "finance.payment",
+    "pk": 3,
+    "fields": {
+      "date": "2022-03-13",
+      "student": 2,
+      "note": "",
+      "amount": 0,
+      "type": null,
+      "status": 0,
+      "from_date": "2022-03-14",
+      "to_date": "2022-04-01",
+      "want_pay_next_month": true,
+      "created": "2022-03-13T12:16:22.494Z",
+      "updated": "2022-03-13T12:16:22.494Z"
+    }
+  },
+  {
+    "model": "finance.payment",
+    "pk": 4,
+    "fields": {
+      "date": "2022-03-13",
+      "student": 2,
+      "note": "",
+      "amount": 450000,
+      "type": 2,
+      "status": 2,
+      "from_date": "2022-03-13",
+      "to_date": "2022-04-13",
+      "want_pay_next_month": false,
+      "created": "2022-03-13T12:21:16.337Z",
+      "updated": "2022-03-13T12:21:16.337Z"
+    }
+  },
+  {
+    "model": "finance.payment",
+    "pk": 5,
+    "fields": {
+      "date": "2022-10-14",
+      "student": 9,
+      "note": "",
+      "amount": 0,
+      "type": null,
+      "status": 0,
+      "from_date": "2022-12-17",
+      "to_date": "2023-01-01",
+      "want_pay_next_month": true,
+      "created": "2022-10-14T21:19:37.492Z",
+      "updated": "2022-10-14T21:19:37.492Z"
+    }
+  }
+]
