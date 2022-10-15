@@ -1,17 +1,15 @@
-{% extends "admin/base_site.html" %}
+{% extends "adminlte/base.html" %}
 {% load i18n %}
 
-{% block breadcrumbs %}
-
-<ol class="breadcrumb">
-    <li><a href="{% url 'admin:index' %}"><i class="fa fa-dashboard"></i> {% trans 'Home' %}</a></li>
-    <li class="active">{% trans 'Server error' %}</li>
-</ol>
+{% block nav_sidebar %}
+<style>
+.content-wrapper, .main-footer, .main-header {
+    margin-left: 0px !important;
+}
+</style>
 {% endblock %}
 
 {% block title %}{% trans 'Server error (500)' %}{% endblock %}
-
-{% block content_title %} {% trans 'Server Error <em>(500)</em>' %} {% endblock %}
 
 {% block content %}
 
