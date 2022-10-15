@@ -6,13 +6,34 @@
 .content-wrapper, .main-footer, .main-header {
     margin-left: 0px !important;
 }
+
 </style>
 {% endblock %}
 
 {% block title %}{% trans 'Page not found' %}{% endblock %}
 
-{% block content %}
+{% block body %}
 
-<p>{% trans "We're sorry, but the requested page could not be found." %}</p>
+<div class="error-page">
+    <h2 class="headline text-warning"> 404</h2>
+    <div class="error-content">
+        <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
+        <p>
+            We could not find the page you were looking for.
+            Meanwhile, you may <a href="{% url 'reception:reception' %}">return to dashboard</a> or try using the search form.
+        </p>
+        <form class="search-form">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Search">
+                <div class="input-group-append">
+                    <button type="submit" name="submit" class="btn btn-warning"><i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
 
 {% endblock %}
