@@ -54,8 +54,10 @@
                                     <span class="float-right text-sm text-danger"><i class="fas fa-online"></i></span>
                                 </h3>
                                 <p class="text-sm"><small>{% trans 'Member since' %} :</small></p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> <small>{{
-                                    request.user.date_joined }}</small></p>
+                                <p class="text-sm text-muted">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <small>{{ request.user.date_joined }}</small>
+                                </p>
                             </div>
                         </div>
                         <!-- Message End -->
@@ -64,8 +66,9 @@
                     <div class="dropdown-footer">
                         <a href="{% block change_password_url %}{% url 'admin:password_change' %}{% endblock %}"
                            class="btn btn-primary btn-sm">{% trans 'Change password' %}</a>
-                        <a href="{% block logout_url %}{% logout_url %}{% endblock %}" class="btn btn-danger btn-sm">{%trans
-                            'Sign out'%}</a>
+                        <a href="{% block logout_url %}{% logout_url %}{% endblock %}" class="btn btn-danger btn-sm">
+                            {%trans 'Sign out'%}
+                        </a>
                     </div>
 
                 </div>

@@ -3,6 +3,14 @@
 
 {% block title %}Student{% endblock %}
 
+{% block nav_sidebar %}
+<style>
+.content-wrapper, .main-footer, .main-header {
+    margin-left: 0px !important;
+}
+</style>
+{% endblock %}
+
 {% block content %}
 <section class="content-header">
     <div class="container-fluid">
@@ -18,7 +26,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'teacher:index' %}">Home</a></li>
                     <li class="breadcrumb-item active">User Profile</li>
                 </ol>
             </div>
